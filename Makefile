@@ -1,5 +1,5 @@
 NAME = push_swap
-LIBFTNAME = libft.a
+LIBFT = libft.a
 LIBFTPRINTF= libftprintf.a
 
 CXX = cc
@@ -9,35 +9,36 @@ IFLAGS = -I.
 SRCS = push_swap.c
 OBJS = $(SRCS:.c=.o)
 
-SRC_LIBFT = ft_atoi.c
-OBJ_LIBFT = $(SRCS:.c=.o)
+SRC_LIBFT = ft_strlen.c ft_atoi.c ft_split.c ft_putchar_fd.c ft_putnbr_fd.c ft_strlcpy.c ft_putstr_fd.c
+OBJ_LIBFT = $(SRC_LIBFT:.c=.o)
 
-SRC_LIBFTPRINTF = ft_printf.c ft_printchar.c ft_printstr.c ft_printptr.c ft_printdec.c ft_printhex.c ft_printuint.c \
+SRC_PRINTF = ft_printf.c ft_printchar.c ft_printstr.c ft_printptr.c ft_printdec.c ft_printhex.c ft_printuint.c \
 		ft_utilities.c
-OBJ_LIBFTPRINTF = $(SRCS:.c=.o)
+OBJ_PRINTF = $(SRC_PRINTF:.c=.o)
+
 
 all: $(NAME)
 	@echo "built $(NAME) successfully"
 
-$(NAME): $(OBJS) $(LIBFTNAME) $(LIBFTPRINTF)
-	$(CXX) -o $@ $^ -L. -L. -lft lftprintf
+$(NAME): $(OBJS) $(LIBFTPRINTF)
+	@$(CXX) -c $(SRCS) -o $(OBJS) $(CFLAGS)
+	@$(CXX) -o $(NAME) $(OBJS) -L. -lftprintf 
 
-$(LIBFTNAME): $(OBJ_LIBFT)
-	@cc -c ft_atoi.c -o ft_atoi.o
-	@ar rcs $(LIBFTNAME) ft_atoi.o
+$(LIBFTPRINTF): $(OBJ_PRINTF) $(LIBFT)
+	@mv $(LIBFT) $(LIBFTPRINTF)
+	@ar rcs $(LIBFTPRINTF) $(OBJ_PRINTF)
 
-$(LIBFTPRINTF): $(OBJ_FTPRINTF)
-	@cc -c ft_atoi.c -o ft_atoi.o
-	@ar rcs $(LIBFTPRINTF) ft_atoi.o
+$(LIBFT): $(OBJ_LIBFT)
+	@ar rcs $(LIBFT) $(OBJ_LIBFT)
 
 %.o: %.c
-	$(CXX) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CXX) $(CCFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS) $(OBJ_LIBFT)
+	@rm -f $(OBJS) $(OBJ_LIBFT) $(OBJ_PRINTF)
 
 fclean: clean
-	@rm -f $(NAME) $(LIBFTNAME)
+	@rm -f $(NAME) $(LIBFT) $(LIBFTPRINTF)
 
 re: fclean all
 

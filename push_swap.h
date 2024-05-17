@@ -1,9 +1,10 @@
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
-
-#include <unistd.h>
-#include <stdlib.h>
-#include "libft.h"
+# define PUSH_SWAP_H
+# include "libft.h"
+# include "ft_printf.h"
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_list
 {
