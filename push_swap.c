@@ -38,29 +38,6 @@ argv
 
 #include "push_swap.h"
 
-static void insertLast(t_list **head, int new_data)
-{
-    t_list *newNode;
-    t_list *tmp;
-
-    newNode = malloc(sizeof(t_list));
-    newNode->data = new_data;
-    newNode->next = NULL;
-    tmp = *head;
-    if (*head == NULL)
-    {
-        newNode->prev = NULL;
-        *head = newNode;
-    }
-    else
-    {
-        while (tmp->next != NULL)
-            tmp = tmp->next;
-        tmp->next = newNode;
-        newNode->prev = tmp;
-    }
-}
-
 /* push เท่ากับ insertFront
  */
 // void push(t_list **head, int new_data)

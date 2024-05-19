@@ -18,6 +18,24 @@ typedef struct s_list
 } t_list;
 
 // Basic Stack Operation
+void push(t_list **head, int new_data);
+int pop(t_list **head);
+void insertLast(t_list **head, int new_data);
+int deleteLast(t_list **head);
+void swap_top(t_list **stack);
+
+// Stack Manipulation
+void pa(t_list **a, t_list **b);
+void pb(t_list **a, t_list **b);
+void ra(t_list **a);
+void rb(t_list **b);
+void rr(t_list **a, t_list **b);
+void rra(t_list **a);
+void rrb(t_list **b);
+void rrr(t_list **a, t_list **b);
+void sa(t_list **a);
+void sb(t_list **b);
+void ss(t_list **a, t_list **b);
 
 // Mandatory Functions
 void turk_algorithm(t_list **a, t_list **b);
