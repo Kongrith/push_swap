@@ -11,63 +11,8 @@ Dequeue: Delete Last Node ของ Linked List
 
 */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "push_swap.h"
 
-typedef struct s_list
-{
-    int data;
-    struct s_list *prev;
-    struct s_list *next;
-} t_list;
-
-void freeList(t_list *head)
-{
-    t_list *tmp;
-
-    while (head != NULL)
-    {
-        tmp = head;
-        head = head->next;
-        free(tmp);
-    }
-}
-int count_stack(t_list **head)
-{
-    if (*head == NULL)
-        return (0);
-
-    t_list *tmp;
-    int len;
-
-    len = 0;
-    tmp = *head;
-    while (tmp != NULL)
-    {
-        tmp = tmp->next;
-        len++;
-    }
-    return (len);
-}
-void display(t_list **head)
-{
-    t_list *tmp;
-    int len;
-
-    len = count_stack(head);
-    if (len == 0)
-    {
-        printf("-- Empty Stack --\n");
-        return;
-    }
-    // แก้ปัญหา head เลื่อน ทำให้เวลาแอด จะแสดงว่า 2 linked lists สุดท้ายเท่านั้น
-    tmp = *head;
-    while (tmp != NULL)
-    {
-        printf("%d\n", tmp->data);
-        tmp = tmp->next;
-    }
-}
 void push(t_list **head, int new_data)
 {
     t_list *newNode;
@@ -308,128 +253,128 @@ void ss(t_list **a, t_list **b)
     sb(b);
 }
 
-int main()
-{
-    t_list *stack_a;
-    t_list *stack_b;
+// int main()
+// {
+//     t_list *stack_a;
+//     t_list *stack_b;
 
-    stack_a = NULL;
-    stack_b = NULL;
+//     stack_a = NULL;
+//     stack_b = NULL;
 
-    push(&stack_a, 5);
-    push(&stack_a, 4);
-    // push(&stack_a, 3);
-    // push(&stack_a, 2);
-    // push(&stack_a, 1);
+//     push(&stack_a, 5);
+//     push(&stack_a, 4);
+// push(&stack_a, 3);
+// push(&stack_a, 2);
+// push(&stack_a, 1);
 
-    push(&stack_b, 10);
-    push(&stack_b, 9);
-    // push(&stack_b, 8);
-    // push(&stack_b, 7);
-    // push(&stack_b, 6);
+// push(&stack_b, 10);
+// push(&stack_b, 9);
+// push(&stack_b, 8);
+// push(&stack_b, 7);
+// push(&stack_b, 6);
 
-    // Unit Test for abnormal operation
-    printf("## before operation ##\n");
-    printf("STACK A:\n");
-    display(&stack_a);
-    printf("\nSTACK B:\n");
-    display(&stack_b);
+// Unit Test for abnormal operation
+// printf("## before operation ##\n");
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    printf("\n## after operation ##\n");
-    rrr(&stack_a, &stack_b);
-    printf("STACK A:\n");
-    display(&stack_a);
-    printf("\nSTACK B:\n");
-    display(&stack_b);
+// printf("\n## after operation ##\n");
+// rrr(&stack_a, &stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // Unit Test for count_stack
-    // printf("len: %d\n", count_stack(&stack_a));
+// Unit Test for count_stack
+// printf("len: %d\n", count_stack(&stack_a));
 
-    // Unit Test for normal operation
-    // printf("## before swap ##\n");
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// Unit Test for normal operation
+// printf("## before swap ##\n");
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n1) ## after: sa ##\n");
-    // sa(&stack_a);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n1) ## after: sa ##\n");
+// sa(&stack_a);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n2) ## after: sb ##\n");
-    // sb(&stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n2) ## after: sb ##\n");
+// sb(&stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n3) ## after: ss ##\n");
-    // ss(&stack_a, &stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n3) ## after: ss ##\n");
+// ss(&stack_a, &stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n4) ## after: pa ##\n");
-    // pa(&stack_a, &stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n4) ## after: pa ##\n");
+// pa(&stack_a, &stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n5) ## after: pb ##\n");
-    // pb(&stack_a, &stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n5) ## after: pb ##\n");
+// pb(&stack_a, &stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n6) ## after: ra ##\n");
-    // ra(&stack_a);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n6) ## after: ra ##\n");
+// ra(&stack_a);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n7) ## after: rb ##\n");
-    // rb(&stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n7) ## after: rb ##\n");
+// rb(&stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n8) ## after: rr ##\n");
-    // rr(&stack_a, &stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n8) ## after: rr ##\n");
+// rr(&stack_a, &stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n9) ## after: rra##\n");
-    // rra(&stack_a);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n9) ## after: rra##\n");
+// rra(&stack_a);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n10) ## after: rrb ##\n");
-    // rrb(&stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n10) ## after: rrb ##\n");
+// rrb(&stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    // printf("\n8) ## after: rrr ##\n");
-    // rrr(&stack_a, &stack_b);
-    // printf("STACK A:\n");
-    // display(&stack_a);
-    // printf("\nSTACK B:\n");
-    // display(&stack_b);
+// printf("\n8) ## after: rrr ##\n");
+// rrr(&stack_a, &stack_b);
+// printf("STACK A:\n");
+// display(&stack_a);
+// printf("\nSTACK B:\n");
+// display(&stack_b);
 
-    freeList(stack_a);
-    freeList(stack_b);
-    return (0);
-}
+//     freeList(stack_a);
+//     freeList(stack_b);
+//     return (0);
+// }
