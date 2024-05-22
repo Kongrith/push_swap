@@ -63,13 +63,13 @@ argv
 //     }
 // }
 
-static void initial_stack(t_list **a, char **argv, int i)
-{
-    while (argv[++i])
-    {
-        insertLast(a, ft_atoi(argv[i]));
-    }
-}
+// void initial_stack(t_list **a, char **argv, int i)
+// {
+//     while (argv[++i])
+//     {
+//         insertLast(a, ft_atoi(argv[i]));
+//     }
+// }
 
 static void push_swap(t_list **a, t_list **b)
 {
@@ -77,12 +77,17 @@ static void push_swap(t_list **a, t_list **b)
 
     len = count_stack(a);
     if (len < 2)
-        return;
+    {
+        ft_printf("do_nothing\n");
+    }
     else if (len == 2)
     {
+        // need to check wheher is sorted ??
+        swap_top(a);
+        ft_printf("sa\n");
     }
     else if (len == 3)
-        three_sorting(a, b);
+        three_sorting(a);
     else
         turk_algorithm(a, b);
 }
@@ -106,10 +111,11 @@ int main(int argc, char **argv)
     }
     else
         initial_stack(&stack_a, argv, 0);
-    is_sorted = chk_stack_order(&stack_a, &stack_b);
+    is_sorted = chk_stack_order(&stack_a);
     if (!is_sorted)
         push_swap(&stack_a, &stack_b);
     display(&stack_a);
     display(&stack_b);
+
     return (0);
 }

@@ -36,9 +36,12 @@ void show_err_msg(void)
     exit(EXIT_SUCCESS);
 }
 
-bool chk_stack_order(t_list **a, t_list **b)
+bool chk_stack_order(t_list **stack)
 {
     bool is_sorted;
+    int num;
+
+    num = count_stack(stack);
     is_sorted = false;
 
     return (is_sorted);

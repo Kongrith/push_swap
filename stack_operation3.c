@@ -10,6 +10,13 @@ void swap_top(t_list **stack)
 	push(stack, num1);
 	push(stack, num2);
 }
+void initial_stack(t_list **a, char **argv, int i)
+{
+	while (argv[++i])
+	{
+		insertLast(a, ft_atoi(argv[i]));
+	}
+}
 
 void sa(t_list **a)
 {

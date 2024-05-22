@@ -1,14 +1,16 @@
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
-#define bool int
-#define false 0
-#define true 1
+
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdarg.h>
 
 #include "libft.h"
 #include "ft_printf.h"
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
+
+#define bool int
+#define false 0
+#define true 1
 
 typedef struct s_list
 {
@@ -16,6 +18,12 @@ typedef struct s_list
     struct s_list *prev;
     struct s_list *next;
 } t_list;
+
+// typedef struct s_list
+// {
+//     int largest_num;
+//     int largest_order;
+// } t_list;
 
 // Basic Stack Operation
 void push(t_list **head, int new_data);
@@ -39,13 +47,14 @@ void ss(t_list **a, t_list **b);
 
 // Mandatory Functions
 void turk_algorithm(t_list **a, t_list **b);
-void three_sorting(t_list **a, t_list **b);
+void three_sorting(t_list **stack);
 
 // Utility Functions
 void display(t_list **head);
 int count_stack(t_list **head);
 void show_err_msg(void);
-bool chk_stack_order(t_list **a, t_list **b);
+bool chk_stack_order(t_list **stack);
 void freeList(t_list *head);
+void initial_stack(t_list **a, char **argv, int i);
 
 #endif
