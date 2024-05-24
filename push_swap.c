@@ -74,17 +74,21 @@ argv
 static void push_swap(t_list **a, t_list **b)
 {
     int len;
+    bool is_sorted;
 
+    is_sorted = chk_sorting(a);
     len = count_stack(a);
     if (len < 2)
     {
-        ft_printf("do_nothing\n");
+        return;
     }
     else if (len == 2)
     {
-        // need to check wheher is sorted ??
-        swap_top(a);
-        ft_printf("sa\n");
+        if (!is_sorted)
+        {
+            swap_top(a);
+            ft_printf("sa\n");
+        }
     }
     else if (len == 3)
         three_sorting(a);
@@ -111,11 +115,11 @@ int main(int argc, char **argv)
     }
     else
         initial_stack(&stack_a, argv, 0);
-    is_sorted = chk_stack_order(&stack_a);
+    is_sorted = chk_sorting(&stack_a);
     if (!is_sorted)
         push_swap(&stack_a, &stack_b);
-    display(&stack_a);
-    display(&stack_b);
+    // display(&stack_a);
+    // display(&stack_b);
 
     return (0);
 }

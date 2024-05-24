@@ -36,16 +36,16 @@ void show_err_msg(void)
     exit(EXIT_SUCCESS);
 }
 
-bool chk_stack_order(t_list **stack)
-{
-    bool is_sorted;
-    int num;
+// bool chk_stack_order(t_list **stack)
+// {
+//     bool is_sorted;
+//     int num;
 
-    num = count_stack(stack);
-    is_sorted = false;
+//     num = count_stack(stack);
+//     is_sorted = false;
 
-    return (is_sorted);
-}
+//     return (is_sorted);
+// }
 
 void freeList(t_list *head)
 {
