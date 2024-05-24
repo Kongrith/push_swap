@@ -29,29 +29,29 @@ static int array_comparison(int original[], int sorted[], int len)
     return (1);
 }
 
-static void descending_sort(int *num, int len)
-{
-    int i;
-    int j;
-    int tmp;
+// static void descending_sort(int *num, int len)
+// {
+//     int i;
+//     int j;
+//     int tmp;
 
-    i = 0;
-    while (i < len - 1)
-    {
-        j = i + 1;
-        while (j < len)
-        {
-            if (num[j] > num[i])
-            {
-                tmp = num[i];
-                num[i] = num[j];
-                num[j] = tmp;
-            }
-            j++;
-        }
-        i++;
-    }
-}
+//     i = 0;
+//     while (i < len - 1)
+//     {
+//         j = i + 1;
+//         while (j < len)
+//         {
+//             if (num[j] > num[i])
+//             {
+//                 tmp = num[i];
+//                 num[i] = num[j];
+//                 num[j] = tmp;
+//             }
+//             j++;
+//         }
+//         i++;
+//     }
+// }
 
 static void ascending_sort(int *num, int len)
 {
