@@ -51,6 +51,7 @@ static int array_comparison(int original[], int sorted[], int len)
 //         }
 //         i++;
 //     }
+<<<<<<< HEAD
 // }
 
 static void ascending_sort(int *num, int len)
@@ -144,3 +145,46 @@ cc chk_stack_is_sorted.c stack_operation1.c stack_operation2.c stack_operation3.
 //     display(&stack);
 //     return (0);
 // }
+=======
+//     *largest_num = num[0];
+//     *second_largest_num = num[1];
+// }
+
+void linked_list_to_arr(t_list **stack)
+{
+    t_list *tmp;
+    int arr[3];
+    int i;
+
+    i = 0;
+    tmp = *stack;
+    while (tmp != NULL)
+    {
+        arr[i] = tmp->data;
+    }
+}
+
+bool chk_sorting(t_list **a)
+{
+    int len;
+
+    len = count_stack(a);
+    linked_list_to_arr(a);
+
+    return (false);
+}
+
+// cc chk_sorting.c stack_operation1.c stack_operation2.c stack_operation3.c pushswap_utilities.c -L. -lftprintf
+int main()
+{
+    t_list *stack_a;
+
+    stack_a = NULL;
+    push(&stack_a, 3);
+    push(&stack_a, 2);
+    push(&stack_a, 1);
+    display(&stack_a);
+    freeList(stack_a);
+    return (0);
+}
+>>>>>>> 3aa6da4e8437f4c62c0eca966cba674947ae2d54

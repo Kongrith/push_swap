@@ -54,7 +54,6 @@ void display(t_list **head);
 int count_stack(t_list **head);
 void show_err_msg(void);
 bool chk_sorting(t_list **stack);
-
 void freeList(t_list *head);
 void initial_stack(t_list **a, char **argv, int i);
 
