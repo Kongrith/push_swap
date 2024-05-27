@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <limits.h>
 
 #include "libft.h"
 #include "ft_printf.h"
@@ -15,6 +16,9 @@
 typedef struct s_list
 {
     int data;
+    int index;
+    int target;
+    int push_cost;
     struct s_list *prev;
     struct s_list *next;
 } t_list;

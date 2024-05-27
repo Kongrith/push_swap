@@ -93,7 +93,10 @@ static void push_swap(t_list **a, t_list **b)
     else if (len == 3)
         three_sorting(a);
     else
+    {
+        ft_printf("turkish algorithm\n");
         turk_algorithm(a, b);
+    }
 }
 
 int main(int argc, char **argv)
@@ -117,8 +120,14 @@ int main(int argc, char **argv)
         initial_stack(&stack_a, argv, 0);
     is_sorted = chk_sorting(&stack_a);
     if (!is_sorted)
+    {
+        ft_printf("push swap\n");
         push_swap(&stack_a, &stack_b);
+    }
+
+    // ft_printf("STACK A:\n");
     // display(&stack_a);
+    // ft_printf("\nSTACK B:\n");
     // display(&stack_b);
 
     return (0);

@@ -81,23 +81,27 @@ void three_sorting(t_list **stack)
     if (logic_case == 0)
     {
         if (logic_sub_case == 1)
-            ft_printf("ra\nsa\n");
+        {
+            ra(stack);
+            sa(stack);
+        }
         else
-            ft_printf("ra\n");
+            ra(stack);
     }
     else if (logic_case == 1)
     {
         if (logic_sub_case == 0)
-            ft_printf("rra\n");
+            rra(stack);
         else
-            ft_printf("sa\nra\n");
+        {
+            sa(stack);
+            ra(stack);
+        }
     }
     else
     {
         if (logic_sub_case == 0)
-            ft_printf("sa\n");
-        else
-            ft_printf("do_nothing\n");
+            sa(stack);
     }
 }
 

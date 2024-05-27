@@ -59,6 +59,7 @@ void pa(t_list **a, t_list **b)
         num1 = pop(b);
         push(a, num1);
     }
+    ft_printf("pa\n");
 }
 void pb(t_list **a, t_list **b)
 {
@@ -71,6 +72,7 @@ void pb(t_list **a, t_list **b)
         num1 = pop(a);
         push(b, num1);
     }
+    ft_printf("pb\n");
 }
 
 void ra(t_list **a)
@@ -84,6 +86,7 @@ void ra(t_list **a)
         num = pop(a);
         insertLast(a, num);
     }
+    ft_printf("ra\n");
 }
 void rb(t_list **b)
 {
@@ -96,6 +99,7 @@ void rb(t_list **b)
         num = pop(b);
         insertLast(b, num);
     }
+    ft_printf("rb\n");
 }
 void rr(t_list **a, t_list **b)
 {

@@ -61,6 +61,7 @@ void rra(t_list **a)
 		num = deleteLast(a);
 		push(a, num);
 	}
+	ft_printf("rra\n");
 }
 
 void rrb(t_list **b)
@@ -74,6 +75,7 @@ void rrb(t_list **b)
 		num = deleteLast(b);
 		push(b, num);
 	}
+	ft_printf("rrb\n");
 }
 
 void rrr(t_list **a, t_list **b)

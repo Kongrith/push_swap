@@ -25,6 +25,7 @@ void sa(t_list **a)
 	len = count_stack(a);
 	if (len > 1)
 		swap_top(a);
+	ft_printf("sa\n");
 }
 
 void sb(t_list **b)
@@ -34,6 +35,7 @@ void sb(t_list **b)
 	len = count_stack(b);
 	if (len > 1)
 		swap_top(b);
+	ft_printf("sb\n");
 }
 
 void ss(t_list **a, t_list **b)

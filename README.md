@@ -58,3 +58,7 @@ https://github.com/Dieau/Push_Swap
 https://pypi.org/project/push-swap-gui/
 
 https://github.com/xbeheydt/push_swap_visualizer
+
+
+## how undo git reset --hard HEAD
+https://stackoverflow.com/questions/5473/how-can-i-undo-git-reset-hard-head1
