@@ -1,21 +1,21 @@
 #include "push_swap.h"
 
-void push_back_to_stackA()
+static void push_back_to_stackA()
 {
 }
 
-// void push_to_stackB(t_list **stack_a, t_list **stack_b)
-// {
-//     int len_stack_a;
+void push_to_stackB(t_list **stack_a, t_list **stack_b)
+{
+    int len_stack_a;
 
-//     len_stack_a = count_stack(stack_a);
-//     while (len_stack_a > 3)
-//     {
-//         pb(stack_a, stack_b);
-//         len_stack_a = count_stack(stack_a);
-//     }
-//     // ft_printf("comp\n");
-// }
+    len_stack_a = count_stack(stack_a);
+    while (len_stack_a > 3)
+    {
+        pb(stack_a, stack_b);
+        len_stack_a = count_stack(stack_a);
+    }
+    // ft_printf("comp\n");
+}
 
 void turk_algorithm(t_list **stack_a, t_list **stack_b)
 {
