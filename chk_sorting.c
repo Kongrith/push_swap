@@ -29,30 +29,6 @@ static int array_comparison(int original[], int sorted[], int len)
     return (1);
 }
 
-// static void descending_sort(int *num, int len)
-// {
-//     int i;
-//     int j;
-//     int tmp;
-
-//     i = 0;
-//     while (i < len - 1)
-//     {
-//         j = i + 1;
-//         while (j < len)
-//         {
-//             if (num[j] > num[i])
-//             {
-//                 tmp = num[i];
-//                 num[i] = num[j];
-//                 num[j] = tmp;
-//             }
-//             j++;
-//         }
-//         i++;
-//     }
-// }
-
 static void ascending_sort(int *num, int len)
 {
     int i;
@@ -74,20 +50,6 @@ static void ascending_sort(int *num, int len)
             j++;
         }
         i++;
-    }
-}
-
-static void linked_list_to_arr(t_list **stack, int *original_ptr)
-{
-    t_list *tmp;
-    int i;
-
-    tmp = *stack;
-    i = 0;
-    while (tmp != NULL)
-    {
-        original_ptr[i++] = tmp->data;
-        tmp = tmp->next;
     }
 }
 

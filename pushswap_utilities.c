@@ -36,6 +36,20 @@ void show_err_msg(void)
     exit(EXIT_SUCCESS);
 }
 
+void linked_list_to_arr(t_list **stack, int *original_ptr)
+{
+    t_list *tmp;
+    int i;
+
+    tmp = *stack;
+    i = 0;
+    while (tmp != NULL)
+    {
+        original_ptr[i++] = tmp->data;
+        tmp = tmp->next;
+    }
+}
+
 // bool chk_stack_order(t_list **stack)
 // {
 //     bool is_sorted;
