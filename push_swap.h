@@ -68,6 +68,7 @@ int find_val_from_index(t_list **stack, int min_index);
 int find_minmax_data(t_list **stack, bool min_logic);
 int find_index_of_target(t_list **stack_b, int target, int len_stack);
 int find_mid_of_stack(int len);
+int min_val_confirmation(t_list **stack_a);
 
 int closest_bigger(int data, t_list **stack_a, int len_stack_a);
 void calc_target_node_b(t_list **stack_a, t_list **stack_b, int len_stack_a);

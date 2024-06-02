@@ -4,7 +4,7 @@
 Errors include for example: some arguments aren’t integers, some arguments are
 bigger than an integer and/or there are duplicates
 
-./push_swap 4 1 9 5 2 6 3 6 8 7
+./push_swap 4 1 9 5 2 6 3 8 7
 
 ARG="3 2 1"; ./push_swap $ARG
 

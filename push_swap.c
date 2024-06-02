@@ -85,17 +85,16 @@ static void push_swap(t_list **a, t_list **b)
     else if (len == 2)
     {
         if (!is_sorted)
-        {
-            swap_top(a);
-            ft_printf("sa\n");
-        }
+            sa(a);
+        // {
+        //     swap_top(a);
+        //     ft_printf("sa\n");
+        // }
     }
     else if (len == 3)
         three_sorting(a);
     else
-    {
         turk_algorithm(a, b);
-    }
 }
 
 int main(int argc, char **argv)
@@ -121,14 +120,16 @@ int main(int argc, char **argv)
     if (!is_sorted)
         push_swap(&stack_a, &stack_b);
 
-    // ## DEBUG ONLY ##
-    ft_printf("\nDEBUG ONLY\n");
-    ft_printf("STACK A:\n");
-    display(&stack_a);
-    ft_printf("\nSTACK B:\n");
-    display(&stack_b);
+    min_val_confirmation(&stack_a);
 
-    freeList(stack_a);
-    freeList(stack_b);
+    // ## DEBUG ONLY ##
+    // ft_printf("\nDEBUG ONLY\n");
+    // ft_printf("STACK A:\n");
+    // display(&stack_a);
+    // ft_printf("\nSTACK B:\n");
+    // display(&stack_b);
+
+    // freeList(stack_a);
+    // freeList(stack_b);
     return (0);
 }

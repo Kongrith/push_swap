@@ -10,24 +10,24 @@ void push_to_a_strategy(t_list **stack_a, t_list **stack_b, int len_stack_a, int
     calc_pushcost_to_a(stack_a, stack_b, len_stack_a, len_stack_b);
 
     // ##DEBUG ONLY##
-    ft_printf("push_to_a_strategy\n");
-    tmp_b = *stack_b;
-    while (tmp_b != NULL)
-    {
-        ft_printf("index: %d data: %d target: %d, push_cost: %d\n",
-                  tmp_b->index, tmp_b->data, tmp_b->target, tmp_b->push_cost);
-        tmp_b = tmp_b->next;
-    }
+    // ft_printf("push_to_a_strategy\n");
+    // tmp_b = *stack_b;
+    // while (tmp_b != NULL)
+    // {
+    //     ft_printf("index: %d data: %d target: %d, push_cost: %d\n",
+    //               tmp_b->index, tmp_b->data, tmp_b->target, tmp_b->push_cost);
+    //     tmp_b = tmp_b->next;
+    // }
     push_decision_to_a(stack_a, stack_b, len_stack_a, len_stack_b);
 
     // ## DEBUG ONLY ##
-    tmp_a = *stack_a;
-    tmp_b = *stack_b;
-    ft_printf("\nSTACK A:\n");
-    display(&tmp_a);
-    ft_printf("\nSTACK B:\n");
-    display(&tmp_b);
-    ft_printf("\n");
+    // tmp_a = *stack_a;
+    // tmp_b = *stack_b;
+    // ft_printf("\nSTACK A:\n");
+    // display(&tmp_a);
+    // ft_printf("\nSTACK B:\n");
+    // display(&tmp_b);
+    // ft_printf("\n");
 }
 
 void push_back_to_stackA(t_list **stack_a, t_list **stack_b)
@@ -57,25 +57,25 @@ void push_to_b_strategy(t_list **stack_a, t_list **stack_b, int len_stack_a, int
     calc_pushcost_to_b(stack_a, stack_b, len_stack_a, len_stack_b);
 
     // แสดงผลสำหรับการ debug เฉยๆ
-    ft_printf("push_to_b_strategy\n");
-    tmp_a = *stack_a;
-    while (tmp_a != NULL)
-    {
-        ft_printf("index: %d data: %d target: %d, push_cost: %d\n",
-                  tmp_a->index, tmp_a->data, tmp_a->target, tmp_a->push_cost);
-        tmp_a = tmp_a->next;
-    }
+    // ft_printf("push_to_b_strategy\n");
+    // tmp_a = *stack_a;
+    // while (tmp_a != NULL)
+    // {
+    //     ft_printf("index: %d data: %d target: %d, push_cost: %d\n",
+    //               tmp_a->index, tmp_a->data, tmp_a->target, tmp_a->push_cost);
+    //     tmp_a = tmp_a->next;
+    // }
 
     push_decision_to_b(stack_a, stack_b, len_stack_a, len_stack_b);
 
     // ## DEBUG ONLY ##
-    tmp_a = *stack_a;
-    tmp_b = *stack_b;
-    ft_printf("\nSTACK A:\n");
-    display(&tmp_a);
-    ft_printf("\nSTACK B:\n");
-    display(&tmp_b);
-    ft_printf("\n");
+    // tmp_a = *stack_a;
+    // tmp_b = *stack_b;
+    // ft_printf("\nSTACK A:\n");
+    // display(&tmp_a);
+    // ft_printf("\nSTACK B:\n");
+    // display(&tmp_b);
+    // ft_printf("\n");
 }
 
 void push_to_stackB(t_list **stack_a, t_list **stack_b)

@@ -60,3 +60,26 @@ int calc_swap_target_to_top(t_list **stack, int target, int len_stack)
     index = find_index_of_target(stack, target, len_stack);
     return (calc_operation(index, len_stack));
 }
+
+int min_val_confirmation(t_list **stack_a)
+{
+    int min_value;
+    int min_index;
+    bool above_mid;
+    int mid;
+    int len_stack_a;
+
+    len_stack_a = count_stack(stack_a);
+    min_value = find_minmax_data(stack_a, 1);
+    min_index = find_index_from_val(stack_a, min_value);
+
+    if (min_index != 0)
+    {
+        mid = find_mid_of_stack(len_stack_a);
+        if (min_index < mid)
+            above_mid = true;
+        else
+            above_mid = false;
+        swap_stack_a(stack_a, min_index, len_stack_a, above_mid);
+    }
+}
