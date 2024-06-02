@@ -129,7 +129,7 @@ int main(int argc, char **argv)
     // ft_printf("\nSTACK B:\n");
     // display(&stack_b);
 
-    // freeList(stack_a);
-    // freeList(stack_b);
+    freeList(stack_a);
+    freeList(stack_b);
     return (0);
 }

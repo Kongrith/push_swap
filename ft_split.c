@@ -74,7 +74,11 @@ static char *split_string(char *s, char c)
 		++len;
 	string = malloc(sizeof(char) * (len + 1));
 	if (!string)
+	{
+		free(string);
 		return (NULL);
+	}
+
 	ft_strlcpy(string, s, len + 1);
 	return (string);
 }
@@ -113,7 +117,11 @@ char **ft_split(char const *s, char c)
 	num_split = count_char_section(ptr, c);
 	string_array = (char **)malloc(sizeof(char *) * (num_split + 1));
 	if (!string_array)
+	{
+		free(string_array);
 		return (NULL);
+	}
+
 	string_array[num_split] = NULL;
 	split_to_str_arr(string_array, ptr, c, num_split);
 	return (string_array);

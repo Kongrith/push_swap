@@ -72,6 +72,8 @@ bool chk_sorting(t_list **stack)
     ft_memmove(sorted_ptr, original_ptr, len * sizeof(int));
     ascending_sort(sorted_ptr, len);
     is_sorted = array_comparison(original_ptr, sorted_ptr, len);
+    free(original_ptr);
+    free(sorted_ptr);
     return (is_sorted);
 }
 
