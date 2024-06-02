@@ -123,6 +123,8 @@ int main(int argc, char **argv)
         push_swap(&stack_a, &stack_b);
     }
 
+    // ## DEBUG ONLY ##
+    ft_printf("\nDEBUG ONLY\n");
     ft_printf("STACK A:\n");
     display(&stack_a);
     ft_printf("\nSTACK B:\n");

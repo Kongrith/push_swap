@@ -4,6 +4,13 @@
 Errors include for example: some arguments aren’t integers, some arguments are
 bigger than an integer and/or there are duplicates
 
+./push_swap 4 1 9 5 2 6 3 6 8 7
+
+ARG="3 2 1"; ./push_swap $ARG
+
+ARG="3 2 1"; ./push_swap $ARG | wc -l
+
+ARG="3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
 
 ## Tutorial from Medium
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
