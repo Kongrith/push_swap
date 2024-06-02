@@ -16,36 +16,20 @@ void swap_stack_a(t_list **stack_a, int index, int len, int above_mid)
         }
     }
 }
-void swap_stack_b(t_list **stack_b, int index, int len, int above_mid)
-{
-    while (0 < index && index < len)
-    {
-        if (above_mid == true)
-        {
-            rb(stack_b);
-            index--;
-        }
-        else
-        {
-            rrb(stack_b);
-            index++;
-        }
-    }
-}
 
 void push_decision_to_a(t_list **stack_a, t_list **stack_b, int len_stack_a)
 {
     int index;
     bool above_mid;
     int mid;
-    int push_cost;
+    // int push_cost;
 
     if (len_stack_a % 2 == 0)
         mid = len_stack_a / 2;
     else
         mid = len_stack_a / 2 + 1;
     // index = calc_min_pushcost(stack_b);
-    calc_min_pushcost(stack_a, &index, &push_cost);
+    calc_min_pushcost(stack_a, &index);
     if (index < mid)
         above_mid = true;
     else
@@ -96,51 +80,6 @@ int closest_bigger(int data, t_list **stack_a, int len_stack_a)
         i--;
     }
     return (find_val_from_index(stack_a, min_index));
-}
-
-void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b)
-{
-    int index;
-    bool above_mid;
-    int mid;
-    int push_cost;
-
-    if (len_stack_a % 2 == 0)
-        mid = len_stack_a / 2;
-    else
-        mid = len_stack_a / 2 + 1;
-    calc_min_pushcost(stack_a, &index, &push_cost);
-    if (index < mid)
-        above_mid = true;
-    else
-        above_mid = false;
-    swap_stack_a(stack_a, index, len_stack_a, above_mid);
-
-    if (len_stack_b % 2 == 0)
-        mid = len_stack_b / 2;
-    else
-        mid = len_stack_b / 2 + 1;
-    // index = calc_min_pushcost(stack_a);
-    if (index < mid)
-        above_mid = true;
-    else
-        above_mid = false;
-    swap_stack_b(stack_b, index, len_stack_b, above_mid);
-    pb(stack_a, stack_b);
-    // while (0 < index && index < len_stack_b)
-    // {
-    //     if (above_mid == true)
-    //     {
-    //         rb(stack_b);
-    //         index--;
-    //     }
-    //     else
-    //     {
-    //         rrb(stack_b);
-    //         index++;
-    //     }
-    // }
-    // pb(stack_a, stack_b);
 }
 
 void calc_target_node_b(t_list **stack_a, t_list **stack_b, int len_stack_a)
@@ -233,6 +172,82 @@ void push_back_to_stackA(t_list **stack_a, t_list **stack_b)
 
 ///
 ///
+void swap_stack_b(t_list **stack_b, int index, int len, int above_mid)
+{
+    while (0 < index && index < len)
+    {
+        if (above_mid == true)
+        {
+            rb(stack_b);
+            index--;
+        }
+        else
+        {
+            rrb(stack_b);
+            index++;
+        }
+    }
+}
+
+void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b)
+{
+    int index;
+    bool above_mid;
+    int mid;
+    int target;
+
+    if (len_stack_a % 2 == 0)
+        mid = len_stack_a / 2;
+    else
+        mid = len_stack_a / 2 + 1;
+    target = calc_min_pushcost(stack_a, &index);
+    if (index < mid)
+        above_mid = true;
+    else
+        above_mid = false;
+    swap_stack_a(stack_a, index, len_stack_a, above_mid);
+
+    // index = calc_swap_target_to_top(stack_b, target, len_stack_b);
+    index = find_index_of_target(stack_b, target, len_stack_b);
+    ft_printf("index: %d\n", index);
+    if (len_stack_b % 2 == 0)
+        mid = len_stack_b / 2;
+    else
+        mid = len_stack_b / 2 + 1;
+    if (index < mid)
+        above_mid = true;
+    else
+        above_mid = false;
+    swap_stack_b(stack_b, index, len_stack_b, above_mid);
+
+    // if (len_stack_b % 2 == 0)
+    //     mid = len_stack_b / 2;
+    // else
+    //     mid = len_stack_b / 2 + 1;
+    // if (index < mid)
+    //     above_mid = true;
+    // else
+    //     above_mid = false;
+    // swap_stack_b(stack_b, index, len_stack_b, above_mid);
+
+    // calc_swap_target_to_top(stack, target, len_stack);
+
+    pb(stack_a, stack_b);
+    // while (0 < index && index < len_stack_b)
+    // {
+    //     if (above_mid == true)
+    //     {
+    //         rb(stack_b);
+    //         index--;
+    //     }
+    //     else
+    //     {
+    //         rrb(stack_b);
+    //         index++;
+    //     }
+    // }
+    // pb(stack_a, stack_b);
+}
 
 void push_to_b_strategy(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b)
 {
@@ -263,9 +278,6 @@ void push_to_b_strategy(t_list **stack_a, t_list **stack_b, int len_stack_a, int
     display(&tmp_b);
     ft_printf("\n");
 }
-/*
-ถ้า stack B ว่าง (เริ่มต้นกระบวนการ) ให้ push ไปได้เลย
-*/
 void push_to_stackB(t_list **stack_a, t_list **stack_b)
 {
     int len_stack_a;
