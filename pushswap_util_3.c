@@ -1,5 +1,16 @@
 #include "push_swap.h"
 
+int find_mid_of_stack(int len)
+{
+    int mid;
+
+    if (len % 2 == 0)
+        mid = len / 2;
+    else
+        mid = len / 2 + 1;
+    return (mid);
+}
+
 int find_index_of_target(t_list **stack_b, int target, int len_stack)
 {
     t_list *tmp_b;
@@ -24,10 +35,12 @@ int calc_operation(int i, int len)
 {
     int mid;
 
-    if (len % 2 == 0)
-        mid = len / 2;
-    else
-        mid = len / 2 + 1;
+    mid = find_mid_of_stack(len);
+
+    // if (len % 2 == 0)
+    //     mid = len / 2;
+    // else
+    //     mid = len / 2 + 1;
     if (len % 2 == 0)
         if (i < mid)
             return (i);
@@ -47,19 +60,6 @@ int calc_operation(int i, int len)
 */
 int calc_swap_target_to_top(t_list **stack, int target, int len_stack)
 {
-    // t_list *tmp;
-    // int i;
-
-    // i = 0;
-    // tmp = *stack;
-    // while (tmp != NULL)
-    // {
-    //     if (tmp->data == target)
-    //         return (calc_operation(i, len_stack));
-    //     tmp = tmp->next;
-    //     i++;
-    // }
-    // return (calc_operation(i, len_stack));
     int index;
 
     index = find_index_of_target(stack, target, len_stack);

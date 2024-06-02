@@ -196,10 +196,12 @@ void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int
     int mid;
     int target;
 
-    if (len_stack_a % 2 == 0)
-        mid = len_stack_a / 2;
-    else
-        mid = len_stack_a / 2 + 1;
+    mid = find_mid_of_stack(len_stack_a);
+
+    // if (len_stack_a % 2 == 0)
+    //     mid = len_stack_a / 2;
+    // else
+    //     mid = len_stack_a / 2 + 1;
     target = calc_min_pushcost(stack_a, &index);
     if (index < mid)
         above_mid = true;
@@ -210,10 +212,13 @@ void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int
     // index = calc_swap_target_to_top(stack_b, target, len_stack_b);
     index = find_index_of_target(stack_b, target, len_stack_b);
     ft_printf("index: %d\n", index);
-    if (len_stack_b % 2 == 0)
-        mid = len_stack_b / 2;
-    else
-        mid = len_stack_b / 2 + 1;
+
+    mid = find_mid_of_stack(len_stack_b);
+
+    // if (len_stack_b % 2 == 0)
+    //     mid = len_stack_b / 2;
+    // else
+    //     mid = len_stack_b / 2 + 1;
     if (index < mid)
         above_mid = true;
     else
