@@ -12,6 +12,14 @@ ARG="3 2 1"; ./push_swap $ARG | wc -l
 
 ARG="3 2 1"; ./push_swap $ARG | ./checker_linux $ARG
 
+## test complexity 
+go to directory push_swap_tester
+bash ./tester.sh ../common_core/push_swap/ 100 100
+
+## visualization
+go to /home/toon/common_core/push_swap/visualizer
+ ./bin/visualizer
+
 ## Tutorial from Medium
 https://medium.com/@ayogun/push-swap-c1f5d2d41e97
 
@@ -69,3 +77,6 @@ https://github.com/xbeheydt/push_swap_visualizer
 
 ## how undo git reset --hard HEAD
 https://stackoverflow.com/questions/5473/how-can-i-undo-git-reset-hard-head1
+
+## how undo git reset --hard HEAD
+https://stackoverflow.com/questions/73045053/failed-to-open-x11-display-how-to-execute-sfml-output-on-wsl-load-wsl-gui-ap

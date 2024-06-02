@@ -73,7 +73,7 @@ void swap_stack_b(t_list **stack_b, int index, int len, int above_mid)
 {
     while (0 < index && index < len)
     {
-        if (above_mid == true)
+        if (above_mid == false)
         {
             rb(stack_b);
             index--;
@@ -96,16 +96,16 @@ void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int
     mid = find_mid_of_stack(len_stack_a);
     target = calc_min_pushcost(stack_a, &index);
     if (index < mid)
-        above_mid = true;
-    else
         above_mid = false;
+    else
+        above_mid = true;
     swap_stack_a(stack_a, index, len_stack_a, above_mid);
     index = find_index_of_target(stack_b, target, len_stack_b);
     mid = find_mid_of_stack(len_stack_b);
     if (index < mid)
-        above_mid = true;
-    else
         above_mid = false;
+    else
+        above_mid = true;
     swap_stack_b(stack_b, index, len_stack_b, above_mid);
     pb(stack_a, stack_b);
 }

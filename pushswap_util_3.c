@@ -77,9 +77,9 @@ int min_val_confirmation(t_list **stack_a)
     {
         mid = find_mid_of_stack(len_stack_a);
         if (min_index < mid)
-            above_mid = true;
-        else
             above_mid = false;
+        else
+            above_mid = true;
         swap_stack_a(stack_a, min_index, len_stack_a, above_mid);
     }
 }
