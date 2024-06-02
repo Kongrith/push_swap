@@ -64,14 +64,22 @@ void initial_stack(t_list **a, char **argv, int i);
 void calc_index_node(t_list **stack);
 int calc_min_pushcost(t_list **stack_a, int *min_index);
 int find_index_from_val(t_list **stack, int num_to_find);
-int find_val_from_index(t_list **stack_b, int min_index);
+int find_val_from_index(t_list **stack, int min_index);
 int find_minmax_data(t_list **stack, bool min_logic);
 int find_index_of_target(t_list **stack_b, int target, int len_stack);
 int find_mid_of_stack(int len);
 
+int closest_bigger(int data, t_list **stack_a, int len_stack_a);
+void calc_target_node_b(t_list **stack_a, t_list **stack_b, int len_stack_a);
+void calc_pushcost_to_a(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b);
+void push_decision_to_a(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b);
+void swap_stack_a(t_list **stack_a, int index, int len, int above_mid);
+
 int closest_smaller(int data, t_list **stack_b, int len_stack_b);
 void calc_target_node_a(t_list **stack_a, t_list **stack_b, int len_stack_b);
 void calc_pushcost_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b);
+void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b);
+void swap_stack_b(t_list **stack_b, int index, int len, int above_mid);
 
 bool chk_sorting(t_list **stack);
 int calc_operation(int i, int len);

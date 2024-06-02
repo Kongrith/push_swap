@@ -9,12 +9,13 @@ copy int arr to another
 https://stackoverflow.com/questions/8287109/how-to-copy-one-integer-array-to-another
 */
 
-#include "push_swap.h"
-
 /*
 0: not equal => dont sort
 1: equal     =>      sorted
 */
+
+#include "push_swap.h"
+
 static int array_comparison(int original[], int sorted[], int len)
 {
     int i;
@@ -68,23 +69,9 @@ bool chk_sorting(t_list **stack)
     if (original_ptr == NULL || sorted_ptr == NULL)
         return (-1);
     linked_list_to_arr(&tmp, original_ptr);
-    // if (original_ptr == NULL || sorted_ptr == NULL)
-    //     return (-1);
-    // i = 0;
-    // while (tmp != NULL)
-    // {
-    //     original_ptr[i++] = tmp->data;
-    //     tmp = tmp->next;
-    // }
-
     ft_memmove(sorted_ptr, original_ptr, len * sizeof(int));
     ascending_sort(sorted_ptr, len);
     is_sorted = array_comparison(original_ptr, sorted_ptr, len);
-    // ft_printf(is_sorted);
-    // for (int i = 0; i < len; i++)
-    //     ft_printf("[%d] original_ptr: %d\n", i, original_ptr[i]);
-    // for (int i = 0; i < len; i++)
-    //     ft_printf("[%d] sorted_ptr: %d\n", i, sorted_ptr[i]);
     return (is_sorted);
 }
 

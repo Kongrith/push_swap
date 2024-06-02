@@ -119,9 +119,7 @@ int main(int argc, char **argv)
         initial_stack(&stack_a, argv, 0);
     is_sorted = chk_sorting(&stack_a);
     if (!is_sorted)
-    {
         push_swap(&stack_a, &stack_b);
-    }
 
     // ## DEBUG ONLY ##
     ft_printf("\nDEBUG ONLY\n");
@@ -130,5 +128,7 @@ int main(int argc, char **argv)
     ft_printf("\nSTACK B:\n");
     display(&stack_b);
 
+    freeList(stack_a);
+    freeList(stack_b);
     return (0);
 }

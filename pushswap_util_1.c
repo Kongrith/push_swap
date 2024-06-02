@@ -50,17 +50,6 @@ void linked_list_to_arr(t_list **stack, int *original_ptr)
     }
 }
 
-// bool chk_stack_order(t_list **stack)
-// {
-//     bool is_sorted;
-//     int num;
-
-//     num = count_stack(stack);
-//     is_sorted = false;
-
-//     return (is_sorted);
-// }
-
 void freeList(t_list *head)
 {
     t_list *tmp;

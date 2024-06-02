@@ -36,11 +36,6 @@ int calc_operation(int i, int len)
     int mid;
 
     mid = find_mid_of_stack(len);
-
-    // if (len % 2 == 0)
-    //     mid = len / 2;
-    // else
-    //     mid = len / 2 + 1;
     if (len % 2 == 0)
         if (i < mid)
             return (i);

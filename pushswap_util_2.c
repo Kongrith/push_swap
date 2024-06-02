@@ -39,16 +39,16 @@ int find_minmax_data(t_list **stack, bool min_logic)
 /*
 ดึงข้อมูลจากเลขลำดับของ stack
 */
-int find_val_from_index(t_list **stack_b, int min_index)
+int find_val_from_index(t_list **stack, int min_index)
 {
-    t_list *tmp_b;
+    t_list *tmp;
     int data;
 
-    tmp_b = *stack_b;
+    tmp = *stack;
     while (min_index >= 0)
     {
-        data = tmp_b->data;
-        tmp_b = tmp_b->next;
+        data = tmp->data;
+        tmp = tmp->next;
         min_index--;
     }
     return (data);
