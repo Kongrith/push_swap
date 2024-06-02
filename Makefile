@@ -6,8 +6,9 @@ CXX = cc
 CFLAGS = -Wall -Werror -Wextra
 IFLAGS = -I.
 
-SRCS = push_swap.c turk_algorithm.c three_sorting.c pushswap_utilities.c stack_operation1.c \
-	stack_operation2.c stack_operation3.c chk_sorting.c
+SRCS = push_swap.c turk_algorithm.c three_sorting.c  chk_sorting.c stack_operation1.c \
+	stack_operation2.c stack_operation3.c pushswap_util_1.c  pushswap_util_2.c pushswap_util_3.c\
+	push_swap_stack_a_utils.c push_swap_stack_b_utils.c
 OBJS = $(SRCS:.c=.o)
 
 SRC_LIBFT = ft_strlen.c ft_atoi.c ft_split.c ft_putchar_fd.c ft_putnbr_fd.c ft_strlcpy.c ft_putstr_fd.c \

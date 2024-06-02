@@ -26,21 +26,21 @@ void bubble_sort(int *num, int *largest_num, int *second_largest_num, int len)
     *second_largest_num = num[1];
 }
 
-int find_order_of_num_in_stack(t_list **stack, int num_to_find)
-{
-    int i;
-    t_list *tmp;
+// int find_order_of_num_in_stack(t_list **stack, int num_to_find)
+// {
+//     int i;
+//     t_list *tmp;
 
-    i = 0;
-    tmp = *stack;
-    while (tmp != NULL)
-    {
-        if (tmp->data == num_to_find)
-            return (i);
-        tmp = tmp->next;
-        i++;
-    }
-}
+//     i = 0;
+//     tmp = *stack;
+//     while (tmp != NULL)
+//     {
+//         if (tmp->data == num_to_find)
+//             return (i);
+//         tmp = tmp->next;
+//         i++;
+//     }
+// }
 
 void find_logic_cases(t_list **stack, int *logic_case, int *logic_sub_case, int len)
 {
@@ -66,8 +66,8 @@ void find_logic_cases(t_list **stack, int *logic_case, int *logic_sub_case, int 
 
     bubble_sort(ptr_arr, &largest_num, &second_largest_num, len);
     tmp_stack = *stack;
-    *logic_case = find_order_of_num_in_stack(&tmp_stack, largest_num);
-    *logic_sub_case = find_order_of_num_in_stack(&tmp_stack, second_largest_num);
+    *logic_case = find_index_from_val(&tmp_stack, largest_num);
+    *logic_sub_case = find_index_from_val(&tmp_stack, second_largest_num);
     // ft_printf("largest num: %d, second largest: %d\n", largest_num, second_largest_num);
     free(ptr_arr);
 }
