@@ -90,7 +90,7 @@ void push_to_stackB(t_list **stack_a, t_list **stack_b)
         pb(stack_a, stack_b);
     len_stack_a = count_stack(stack_a);
     len_stack_b = count_stack(stack_b);
-    while (len_stack_a > 3)
+    while (len_stack_a > 5)
     {
         push_to_b_strategy(stack_a, stack_b, len_stack_a, len_stack_b);
         len_stack_a = count_stack(stack_a);
@@ -101,6 +101,8 @@ void push_to_stackB(t_list **stack_a, t_list **stack_b)
 void turk_algorithm(t_list **stack_a, t_list **stack_b)
 {
     push_to_stackB(stack_a, stack_b);
-    three_sorting(stack_a);
+    // three_sorting(stack_a);
+    // four_sorting(stack_a, stack_b);
+    five_sorting(stack_a, stack_b);
     push_back_to_stackA(stack_a, stack_b);
 }

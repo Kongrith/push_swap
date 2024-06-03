@@ -86,26 +86,26 @@ void swap_stack_a(t_list **stack_a, int index, int len, int above_mid)
     }
 }
 
-void push_decision_to_a(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b)
-{
-    int index;
-    bool above_mid;
-    int mid;
-    int target;
+// void push_decision_to_a(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b)
+// {
+//     int index;
+//     bool above_mid;
+//     int mid;
+//     int target;
 
-    mid = find_mid_of_stack(len_stack_a);
-    target = calc_min_pushcost(stack_b, &index);
-    if (index < mid)
-        above_mid = false;
-    else
-        above_mid = true;
-    swap_stack_b(stack_b, index, len_stack_b, above_mid);
-    index = find_index_of_target(stack_a, target, len_stack_a);
-    mid = find_mid_of_stack(len_stack_a);
-    if (index < mid)
-        above_mid = false;
-    else
-        above_mid = true;
-    swap_stack_a(stack_a, index, len_stack_a, above_mid);
-    pa(stack_a, stack_b);
-}
+//     mid = find_mid_of_stack(len_stack_a);
+//     target = calc_min_pushcost(stack_b, &index);
+//     if (index < mid)
+//         above_mid = false;
+//     else
+//         above_mid = true;
+//     swap_stack_b(stack_b, index, len_stack_b, above_mid);
+//     index = find_index_of_target(stack_a, target, len_stack_a);
+//     mid = find_mid_of_stack(len_stack_a);
+//     if (index < mid)
+//         above_mid = false;
+//     else
+//         above_mid = true;
+//     swap_stack_a(stack_a, index, len_stack_a, above_mid);
+//     pa(stack_a, stack_b);
+// }

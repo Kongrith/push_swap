@@ -76,13 +76,13 @@ int find_index_from_val(t_list **stack, int num_to_find)
 /*
 หา index ของ stack ที่มี push cost น้อยที่สุด
 */
-int calc_min_pushcost(t_list **stack_a, int *min_index)
+int calc_min_pushcost(t_list **stack, int *min_index)
 {
     t_list *tmp_a;
     int target;
     int min_cost;
 
-    tmp_a = *stack_a;
+    tmp_a = *stack;
     *min_index = 0;
     min_cost = INT_MAX;
     while (tmp_a != NULL)

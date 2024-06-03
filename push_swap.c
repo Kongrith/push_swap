@@ -79,20 +79,18 @@ static void push_swap(t_list **a, t_list **b)
     is_sorted = chk_sorting(a);
     len = count_stack(a);
     if (len < 2)
-    {
         return;
-    }
     else if (len == 2)
     {
         if (!is_sorted)
             sa(a);
-        // {
-        //     swap_top(a);
-        //     ft_printf("sa\n");
-        // }
     }
     else if (len == 3)
         three_sorting(a);
+    else if (len == 4)
+        four_sorting(a, b);
+    else if (len == 5)
+        five_sorting(a, b);
     else
         turk_algorithm(a, b);
 }
