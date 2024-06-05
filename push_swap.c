@@ -38,39 +38,6 @@ argv
 
 #include "push_swap.h"
 
-/* push เท่ากับ insertFront
- */
-// void push(t_list **head, int new_data)
-// {
-//     t_list *newNode;
-//     t_list *tmp;
-
-//     tmp = *head;
-//     newNode = malloc(sizeof(t_list));
-//     newNode->data = new_data;
-//     if (*head == NULL)
-//     {
-//         newNode->next = NULL;
-//         newNode->prev = NULL;
-//         *head = newNode;
-//     }
-//     else
-//     {
-//         tmp->prev = newNode;
-//         newNode->next = *head;
-//         newNode->prev = NULL;
-//         *head = newNode;
-//     }
-// }
-
-// void initial_stack(t_list **a, char **argv, int i)
-// {
-//     while (argv[++i])
-//     {
-//         insertLast(a, ft_atoi(argv[i]));
-//     }
-// }
-
 static void push_swap(t_list **a, t_list **b)
 {
     int len;
@@ -111,6 +78,14 @@ int main(int argc, char **argv)
             show_err_msg();
         argv = ft_split(argv[1], ' ');
         initial_stack(&stack_a, argv, -1);
+        free_double_pointer(argv);
+
+        // int i;
+        // i = 0;
+        // for (int i = 0; i < 4; ++i)
+        // {
+        //     free(argv[i]);
+        // }
     }
     else
         initial_stack(&stack_a, argv, 0);

@@ -101,8 +101,6 @@ void push_to_stackB(t_list **stack_a, t_list **stack_b)
 void turk_algorithm(t_list **stack_a, t_list **stack_b)
 {
     push_to_stackB(stack_a, stack_b);
-    // three_sorting(stack_a);
-    // four_sorting(stack_a, stack_b);
     five_sorting(stack_a, stack_b);
     push_back_to_stackA(stack_a, stack_b);
 }

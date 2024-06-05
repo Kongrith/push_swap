@@ -6,13 +6,15 @@ CXX = cc
 CFLAGS = -Wall -Werror -Wextra
 IFLAGS = -I.
 
-SRCS = push_swap.c turk_algorithm.c three_sorting.c  four_sorting.c five_sorting.c chk_sorting.c stack_operation1.c \
-	stack_operation2.c stack_operation3.c stack_operation4.c pushswap_util_1.c  pushswap_util_2.c pushswap_util_3.c\
-	pushswap_util_4.c push_swap_stack_a_utils.c push_swap_stack_b_utils.c
+SRCS = push_swap.c three_sorting.c  four_sorting.c five_sorting.c turk_algorithm.c chk_sorting.c \
+	stack_operation1.c stack_operation2.c stack_operation3.c stack_operation4.c \
+	pushswap_util_1.c  pushswap_util_2.c pushswap_util_3.c pushswap_util_4.c \
+	push_swap_stack_a_utils.c push_swap_stack_b_utils.c pushswap_err_handler_.c
+	
 OBJS = $(SRCS:.c=.o)
 
 SRC_LIBFT = ft_strlen.c ft_atoi.c ft_split.c ft_putchar_fd.c ft_putnbr_fd.c ft_strlcpy.c ft_putstr_fd.c \
-		ft_memmove.c
+		ft_memmove.c ft_isalpha.c
 OBJ_LIBFT = $(SRC_LIBFT:.c=.o)
 
 SRC_PRINTF = ft_printf.c ft_printchar.c ft_printstr.c ft_printptr.c ft_printdec.c ft_printhex.c ft_printuint.c \
@@ -23,7 +25,7 @@ all: $(NAME)
 	@echo "built $(NAME) successfully"
 
 $(NAME): $(OBJS) $(LIBFTPRINTF)
-	$(CXX) -o $(NAME) $(OBJS) -L. -lftprintf 
+	$(CXX) -o $(NAME) $(OBJS) -L. -lftprintf -fsanitize=address
 
 $(LIBFTPRINTF): $(OBJ_PRINTF) $(LIBFT)
 	mv $(LIBFT) $(LIBFTPRINTF)

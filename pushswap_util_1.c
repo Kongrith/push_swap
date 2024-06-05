@@ -30,13 +30,6 @@ int count_stack(t_list **head)
     return (len);
 }
 
-void show_err_msg(void)
-{
-    // ft_printf("Error\n");
-    write(2, "Error\n", 6);
-    exit(EXIT_SUCCESS);
-}
-
 void linked_list_to_arr(t_list **stack, int *original_ptr)
 {
     t_list *tmp;
@@ -61,4 +54,17 @@ void freeList(t_list *head)
         head = head->next;
         free(tmp);
     }
+}
+
+void free_double_pointer(char **ptr)
+{
+    int i;
+
+    i = 0;
+    while (ptr[i])
+    {
+        free(ptr[i]);
+        i++;
+    }
+    free(ptr);
 }

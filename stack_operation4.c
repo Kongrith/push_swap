@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+/* push เท่ากับ insertFront
+ */
 void push(t_list **head, int new_data)
 {
     t_list *newNode;
@@ -48,20 +50,26 @@ int pop(t_list **head)
     return (pop_data);
 }
 
-int chk_num_duplicate()
+/*
+0: ไม่เจอตัวอักษร
+1: เจอตัวอักษร
+*/
+bool chk_alphabet(char *str)
 {
-    int count;
-    int array[5];
-    count = sizeof(array) / sizeof(array[0]);
+    int i = 0;
+    bool err_flag;
 
-    for (int i = 0; i < count - 1; i++)
+    err_flag = false;
+    while (str[i])
     {
-        for (int j = i + 1; j < count; j++)
+        if (ft_isalpha(str[i]) || str[i] == '.')
         {
-            if (array[i] == array[j])
-                show_err_msg();
+            err_flag = true;
+            return (err_flag);
         }
+        i++;
     }
+    return (err_flag);
 }
 
 /*
@@ -70,9 +78,32 @@ i++
 */
 void initial_stack(t_list **a, char **argv, int i)
 {
+    int num;
+    // int *ptr;
+    bool err_flag;
+    t_list *tmp;
+
+    err_flag = false;
+    // ptr = malloc(sizeof(int) * 3);
+    // ft_printf("%s\n", argv);
     while (argv[++i])
     {
-        ft_printf(">%s\n", argv[i]);
-        insertLast(a, ft_atoi(argv[i]));
+        // ft_printf("%s\n", argv[i]);
+        err_flag = chk_alphabet(argv[i]);
+        if (err_flag)
+            show_err_msg();
+        num = ft_atoi(argv[i]);
+        // ft_printf("num: %d\n", num);
+        // ft_printf("\n");
+        insertLast(a, num);
     }
+    // ft_printf("?????\n");
+    // tmp = *a;
+    // linked_list_to_arr(a, ptr);
+
+    // ft_printf("%d\n", ptr[0]);
+    // ft_printf("%d\n", ptr[1]);
+    // ft_printf("%d\n", ptr[2]);
+    // free(ptr);
+    // free(tmp);
 }

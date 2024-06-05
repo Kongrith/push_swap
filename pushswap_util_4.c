@@ -1,19 +1,8 @@
 #include "push_swap.h"
 
-int chk_mid(int mid, int index)
-{
-    int above_mid;
-
-    if (index < mid)
-        above_mid = false;
-    else
-        above_mid = true;
-    return (above_mid);
-}
-
 // Joint instructions(ss, rr, rrr);
-void joint_instructions_a(t_list **stack_a, t_list **stack_b, int index_stack_a, int index_stack_b,
-                          int above_mid_stack_a, int above_mid_stack_b, int len_stack_a, int len_stack_b)
+void joint_instructions(t_list **stack_a, t_list **stack_b, int index_stack_a, int index_stack_b,
+                        int above_mid_stack_a, int above_mid_stack_b, int len_stack_a, int len_stack_b)
 {
     while ((0 < index_stack_a && index_stack_a < len_stack_a) && (0 < index_stack_b && index_stack_b < len_stack_b))
     {
@@ -41,31 +30,6 @@ void joint_instructions_a(t_list **stack_a, t_list **stack_b, int index_stack_a,
     swap_stack_b(stack_b, index_stack_b, len_stack_b, above_mid_stack_b);
 }
 
-// void joint_instructions_b(t_list **stack_a, t_list **stack_b, int index_stack_a, int index_stack_b,
-//                           int above_mid_stack_a, int above_mid_stack_b, int len_stack_a, int len_stack_b)
-// {
-//     while ((2 < index_stack_a && index_stack_a < len_stack_a) || (2 < index_stack_b && index_stack_b < len_stack_b))
-//     {
-//         if (above_mid_stack_a && above_mid_stack_b)
-//         {
-//             rrr(stack_a, stack_b);
-//             index_stack_a++;
-//             index_stack_b++;
-//         }
-//         else
-//         {
-//             if (index_stack_a == 1 && index_stack_b == 1)
-//                 ss(stack_a, stack_b);
-//             else
-//                 rr(stack_a, stack_b);
-//             index_stack_a--;
-//             index_stack_b--;
-//         }
-//     }
-//     swap_stack_a(stack_a, index_stack_a, len_stack_a, above_mid_stack_a);
-//     swap_stack_b(stack_b, index_stack_b, len_stack_b, above_mid_stack_b);
-// }
-
 void push_decision_to_a(t_list **stack_a, t_list **stack_b, int len_stack_a, int len_stack_b)
 {
     int target;
@@ -81,8 +45,8 @@ void push_decision_to_a(t_list **stack_a, t_list **stack_b, int len_stack_a, int
 
     if (above_mid_stack_a && above_mid_stack_b)
     {
-        joint_instructions_a(stack_a, stack_b, index_stack_a, index_stack_b,
-                             above_mid_stack_a, above_mid_stack_b, len_stack_a, len_stack_b);
+        joint_instructions(stack_a, stack_b, index_stack_a, index_stack_b,
+                           above_mid_stack_a, above_mid_stack_b, len_stack_a, len_stack_b);
     }
     else
     {
@@ -115,8 +79,8 @@ void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int
 
     if (above_mid_stack_a && above_mid_stack_b)
     {
-        joint_instructions_a(stack_a, stack_b, index_stack_a, index_stack_b,
-                             above_mid_stack_a, above_mid_stack_b, len_stack_a, len_stack_b);
+        joint_instructions(stack_a, stack_b, index_stack_a, index_stack_b,
+                           above_mid_stack_a, above_mid_stack_b, len_stack_a, len_stack_b);
     }
     else
     {
@@ -126,4 +90,27 @@ void push_decision_to_b(t_list **stack_a, t_list **stack_b, int len_stack_a, int
     // swap_stack_a(stack_a, index_stack_a, len_stack_a, above_mid_stack_a);
     // swap_stack_b(stack_b, index_stack_b, len_stack_b, above_mid_stack_b);
     pb(stack_a, stack_b);
+}
+
+int min_val_confirmation(t_list **stack_a)
+{
+    int min_value;
+    int min_index;
+    bool above_mid;
+    int mid;
+    int len_stack_a;
+
+    len_stack_a = count_stack(stack_a);
+    min_value = find_minmax_data(stack_a, 1);
+    min_index = find_index_from_val(stack_a, min_value);
+
+    if (min_index != 0)
+    {
+        mid = find_mid_of_stack(len_stack_a);
+        if (min_index < mid)
+            above_mid = false;
+        else
+            above_mid = true;
+        swap_stack_a(stack_a, min_index, len_stack_a, above_mid);
+    }
 }

@@ -59,6 +59,7 @@ int count_stack(t_list **head);
 void show_err_msg(void);
 void linked_list_to_arr(t_list **stack, int *original_ptr);
 void freeList(t_list *head);
+void free_double_pointer(char **ptr);
 void initial_stack(t_list **a, char **argv, int i);
 
 void calc_index_node(t_list **stack);
