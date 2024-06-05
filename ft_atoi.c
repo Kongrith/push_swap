@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static	int	ft_isspace(int ch)
+static int ft_isspace(int ch)
 {
 	if ((9 <= ch && ch <= 13) || ch == 32)
 	{
@@ -22,11 +22,11 @@ static	int	ft_isspace(int ch)
 		return (0);
 }
 
-static	int	manage_character(char *str, int *ptr)
+static int manage_character(char *str, int *ptr)
 {
-	int	sign;
-	int	flag;
-	int	index;
+	int sign;
+	int flag;
+	int index;
 
 	sign = 1;
 	flag = 0;
@@ -50,22 +50,28 @@ static	int	manage_character(char *str, int *ptr)
 	return (sign);
 }
 
-int	ft_atoi(const char *str)
+bool ft_atoi(const char *str, int *num)
 {
-	int	input_number;
-	int	sign;
-	int	index;
+	int input_number;
+	int sign;
+	int index;
+	bool err_flag;
 
-	sign = manage_character((char *) str, &index);
+	err_flag = 0;
+	sign = manage_character((char *)str, &index);
 	if (sign == 0)
-		return (0);
+	{
+		err_flag = 1;
+		return (err_flag);
+	}
 	input_number = 0;
 	while ((str[index] != '\0') && ('0' <= str[index] && str[index] <= '9'))
 	{
 		input_number = 10 * input_number + (str[index] - '0');
 		++index;
 	}
-	return (input_number * sign);
+	*num = input_number * sign;
+	return (err_flag);
 }
 /*
 int	main()

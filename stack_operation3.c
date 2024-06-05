@@ -36,3 +36,10 @@ void ss(t_list **a, t_list **b)
 	sa(a);
 	sb(b);
 }
+
+void finalize_check(t_list *stack_a, t_list *stack_b)
+{
+	min_val_confirmation(&stack_a);
+	freeList(stack_a);
+	freeList(stack_b);
+}

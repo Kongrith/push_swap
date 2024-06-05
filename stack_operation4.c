@@ -84,6 +84,7 @@ void initial_stack(t_list **a, char **argv, int i)
     t_list *tmp;
 
     err_flag = false;
+    num = 0;
     // ptr = malloc(sizeof(int) * 3);
     // ft_printf("%s\n", argv);
     while (argv[++i])
@@ -92,7 +93,9 @@ void initial_stack(t_list **a, char **argv, int i)
         err_flag = chk_alphabet(argv[i]);
         if (err_flag)
             show_err_msg();
-        num = ft_atoi(argv[i]);
+        err_flag = ft_atoi(argv[i], &num);
+        if (err_flag)
+            show_err_msg();
         // ft_printf("num: %d\n", num);
         // ft_printf("\n");
         insertLast(a, num);

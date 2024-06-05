@@ -23,12 +23,6 @@ typedef struct s_list
     struct s_list *next;
 } t_list;
 
-// typedef struct s_list
-// {
-//     int largest_num;
-//     int largest_order;
-// } t_list;
-
 // Basic Stack Operation
 void push(t_list **head, int new_data);
 int pop(t_list **head);
@@ -70,6 +64,7 @@ int find_minmax_data(t_list **stack, bool min_logic);
 int find_index_of_target(t_list **stack_b, int target, int len_stack);
 int find_mid_of_stack(int len);
 int min_val_confirmation(t_list **stack_a);
+void finalize_check(t_list *stack_a, t_list *stack_b);
 
 int closest_bigger(int data, t_list **stack_a, int len_stack_a);
 void calc_target_node_b(t_list **stack_a, t_list **stack_b, int len_stack_a);

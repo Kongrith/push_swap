@@ -79,21 +79,13 @@ int main(int argc, char **argv)
         argv = ft_split(argv[1], ' ');
         initial_stack(&stack_a, argv, -1);
         free_double_pointer(argv);
-
-        // int i;
-        // i = 0;
-        // for (int i = 0; i < 4; ++i)
-        // {
-        //     free(argv[i]);
-        // }
     }
     else
         initial_stack(&stack_a, argv, 0);
     is_sorted = chk_sorting(&stack_a);
     if (!is_sorted)
         push_swap(&stack_a, &stack_b);
-
-    min_val_confirmation(&stack_a);
+    finalize_check(stack_a, stack_b);
 
     // ## DEBUG ONLY ##
     // ft_printf("\nDEBUG ONLY\n");
@@ -101,8 +93,5 @@ int main(int argc, char **argv)
     // display(&stack_a);
     // ft_printf("\nSTACK B:\n");
     // display(&stack_b);
-
-    freeList(stack_a);
-    freeList(stack_b);
     return (0);
 }
