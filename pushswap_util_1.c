@@ -32,7 +32,8 @@ int count_stack(t_list **head)
 
 void show_err_msg(void)
 {
-    ft_printf("Error\n");
+    // ft_printf("Error\n");
+    write(2, "Error\n", 6);
     exit(EXIT_SUCCESS);
 }
 
