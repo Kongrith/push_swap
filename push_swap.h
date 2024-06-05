@@ -84,4 +84,6 @@ int calc_swap_target_to_top(t_list **stack, int target, int len_stack);
 void four_sorting(t_list **stack_a, t_list **stack_b);
 int chk_mid(int mid, int index);
 void five_sorting(t_list **stack_a, t_list **stack_b);
+
+void error_handler(char *str, int *num);
 #endif

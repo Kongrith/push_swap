@@ -59,7 +59,7 @@ bool ft_atoi(const char *str, int *num)
 
 	err_flag = 0;
 	sign = manage_character((char *)str, &index);
-	if (sign == 0)
+	if (sign == 0 || str[index] == '\0')
 	{
 		err_flag = 1;
 		return (err_flag);

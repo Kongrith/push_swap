@@ -51,28 +51,6 @@ int pop(t_list **head)
 }
 
 /*
-0: ไม่เจอตัวอักษร
-1: เจอตัวอักษร
-*/
-bool chk_alphabet(char *str)
-{
-    int i = 0;
-    bool err_flag;
-
-    err_flag = false;
-    while (str[i])
-    {
-        if (ft_isalpha(str[i]) || str[i] == '.')
-        {
-            err_flag = true;
-            return (err_flag);
-        }
-        i++;
-    }
-    return (err_flag);
-}
-
-/*
 ++i
 i++
 */
@@ -80,24 +58,21 @@ void initial_stack(t_list **a, char **argv, int i)
 {
     int num;
     // int *ptr;
-    bool err_flag;
+    // bool err_flag;
     t_list *tmp;
 
-    err_flag = false;
+    // err_flag = false;
     num = 0;
     // ptr = malloc(sizeof(int) * 3);
-    // ft_printf("%s\n", argv);
     while (argv[++i])
     {
-        // ft_printf("%s\n", argv[i]);
-        err_flag = chk_alphabet(argv[i]);
-        if (err_flag)
-            show_err_msg();
-        err_flag = ft_atoi(argv[i], &num);
-        if (err_flag)
-            show_err_msg();
-        // ft_printf("num: %d\n", num);
-        // ft_printf("\n");
+        // err_flag = chk_alphabet(argv[i]);
+        // if (err_flag)
+        //     show_err_msg();
+        // err_flag = ft_atoi(argv[i], &num);
+        // if (err_flag)
+        //     show_err_msg();
+        error_handler(argv[i], &num);
         insertLast(a, num);
     }
     // ft_printf("?????\n");
