@@ -85,5 +85,8 @@ void four_sorting(t_list **stack_a, t_list **stack_b);
 int chk_mid(int mid, int index);
 void five_sorting(t_list **stack_a, t_list **stack_b);
 
-void error_handler(char *str, int *num);
+void error_handler(char *str, long *num);
+void ascending_sort(int *num, int len);
+bool chk_duplicate(t_list **tmp);
+
 #endif

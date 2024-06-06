@@ -76,6 +76,8 @@ int main(int argc, char **argv)
     {
         if (argv[1][0] == '\0')
             show_err_msg();
+        if (ft_strchr(argv[1], '!') != NULL)
+            show_err_msg();
         argv = ft_split(argv[1], ' ');
         initial_stack(&stack_a, argv, -1);
         free_double_pointer(argv);

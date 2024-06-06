@@ -30,7 +30,7 @@ static int array_comparison(int original[], int sorted[], int len)
     return (1);
 }
 
-static void ascending_sort(int *num, int len)
+void ascending_sort(int *num, int len)
 {
     int i;
     int j;

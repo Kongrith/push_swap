@@ -50,9 +50,9 @@ static int manage_character(char *str, int *ptr)
 	return (sign);
 }
 
-bool ft_atoi(const char *str, int *num)
+bool ft_atoi(const char *str, long *num)
 {
-	int input_number;
+	long input_number;
 	int sign;
 	int index;
 	bool err_flag;
@@ -70,7 +70,17 @@ bool ft_atoi(const char *str, int *num)
 		input_number = 10 * input_number + (str[index] - '0');
 		++index;
 	}
+	if (str[index] == '-' || str[index] == '+' || str[index] == '!')
+	{
+		err_flag = 1;
+		return (err_flag);
+	}
 	*num = input_number * sign;
+	if ((*num) > 2147483647 || (*num) < -2147483648)
+	{
+		err_flag = 1;
+		return (err_flag);
+	}
 	return (err_flag);
 }
 /*
