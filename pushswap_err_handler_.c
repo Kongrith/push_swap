@@ -26,7 +26,7 @@ bool chk_duplicate(t_list **tmp)
         if (ptr[i] == ptr[i + 1])
         {
             free(ptr);
-            freeList(*tmp);
+            // freeList(*tmp);
             return (true);
         }
         i++;
