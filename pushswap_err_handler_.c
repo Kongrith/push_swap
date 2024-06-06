@@ -2,7 +2,6 @@
 
 void show_err_msg(void)
 {
-    // ft_printf("Error\n");
     write(2, "Error\n", 6);
     exit(EXIT_SUCCESS);
 }
@@ -74,7 +73,13 @@ bool chk_alphabet(char *str)
     err_flag = false;
     while (str[i])
     {
+<<<<<<< HEAD
         if (ft_isalpha(str[i]) || str[i] == '.' || str[i] == '!')
+=======
+        if (ft_isalpha(str[i]) || str[i] == '.')
+        // if (str[i] < 43 || str[i] == 44 || (45 < str[i] && str[i] < 48) || 57 < str[i])
+        // if ((45 < str[i] && str[i] < 48) || str[i] == '.')
+>>>>>>> c3c3767ed48e837cc1f0a396a401127cae35df01
         {
             err_flag = true;
             return (err_flag);
@@ -85,15 +90,27 @@ bool chk_alphabet(char *str)
 }
 
 // bool ft_atoi(const char *str, int *num);
+<<<<<<< HEAD
 void error_handler(char *str, long *num)
+=======
+bool error_handler(char *str, long *num)
+>>>>>>> c3c3767ed48e837cc1f0a396a401127cae35df01
 {
     bool err_flag;
 
     err_flag = false;
     err_flag = chk_alphabet(str);
     if (err_flag == true)
+<<<<<<< HEAD
         show_err_msg();
     err_flag = ft_atoi(str, num);
     if (err_flag == true)
         show_err_msg();
+=======
+        return (true);
+    err_flag = ft_atoi(str, num);
+    if (err_flag == true)
+        return (true);
+    return (err_flag);
+>>>>>>> c3c3767ed48e837cc1f0a396a401127cae35df01
 }

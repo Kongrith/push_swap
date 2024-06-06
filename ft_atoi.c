@@ -22,11 +22,11 @@ static int ft_isspace(int ch)
 		return (0);
 }
 
-static int manage_character(char *str, int *ptr)
+static int manage_character(char *str, long *ptr)
 {
 	int sign;
 	int flag;
-	int index;
+	long index;
 
 	sign = 1;
 	flag = 0;
@@ -54,12 +54,12 @@ bool ft_atoi(const char *str, long *num)
 {
 	long input_number;
 	int sign;
-	int index;
+	long index;
 	bool err_flag;
 
 	err_flag = 0;
 	sign = manage_character((char *)str, &index);
-	if (sign == 0 || str[index] == '\0')
+	if (sign == 0)
 	{
 		err_flag = 1;
 		return (err_flag);

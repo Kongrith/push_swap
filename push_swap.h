@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <limits.h>
 
 #include "libft.h"
 #include "ft_printf.h"
