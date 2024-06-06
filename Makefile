@@ -14,7 +14,7 @@ SRCS = push_swap.c three_sorting.c  four_sorting.c five_sorting.c turk_algorithm
 OBJS = $(SRCS:.c=.o)
 
 SRC_LIBFT = ft_strlen.c ft_atoi.c ft_split.c ft_putchar_fd.c ft_putnbr_fd.c ft_strlcpy.c ft_putstr_fd.c \
-		ft_memmove.c ft_isalpha.c
+		ft_memmove.c
 OBJ_LIBFT = $(SRC_LIBFT:.c=.o)
 
 SRC_PRINTF = ft_printf.c ft_printchar.c ft_printstr.c ft_printptr.c ft_printdec.c ft_printhex.c ft_printuint.c \

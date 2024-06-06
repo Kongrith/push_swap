@@ -61,7 +61,8 @@ bool chk_alphabet(char *str)
     err_flag = false;
     while (str[i])
     {
-        if (ft_isalpha(str[i]) || str[i] == '.')
+        // if (ft_isalpha(str[i]) || str[i] == '.')
+        if (str[i] < 48 || 57 < str[i])
         {
             err_flag = true;
             return (err_flag);
