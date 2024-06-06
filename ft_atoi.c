@@ -22,11 +22,11 @@ static int ft_isspace(int ch)
 		return (0);
 }
 
-static int manage_character(char *str, int *ptr)
+static int manage_character(char *str, long *ptr)
 {
 	int sign;
 	int flag;
-	int index;
+	long index;
 
 	sign = 1;
 	flag = 0;
@@ -50,11 +50,11 @@ static int manage_character(char *str, int *ptr)
 	return (sign);
 }
 
-bool ft_atoi(const char *str, int *num)
+bool ft_atoi(const char *str, long *num)
 {
-	int input_number;
+	long input_number;
 	int sign;
-	int index;
+	long index;
 	bool err_flag;
 
 	err_flag = 0;
@@ -71,6 +71,8 @@ bool ft_atoi(const char *str, int *num)
 		++index;
 	}
 	*num = input_number * sign;
+	if ((*num) < INT_MIN || INT_MAX < (*num))
+		err_flag = 1;
 	return (err_flag);
 }
 /*

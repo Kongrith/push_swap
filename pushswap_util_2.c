@@ -44,7 +44,10 @@ int find_val_from_index(t_list **stack, int min_index)
     t_list *tmp;
     int data;
 
-    tmp = *stack;
+    // data = 0;
+    // tmp = *stack;
+    // if (tmp == NULL)
+    //     return (0);
     while (min_index >= 0)
     {
         data = tmp->data;

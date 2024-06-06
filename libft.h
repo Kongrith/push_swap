@@ -17,6 +17,8 @@
 #define bool int
 #define false 0
 #define true 1
+#define INT_MIN -2147483648
+#define INT_MAX 2147483647
 
 // functions from ctype.h
 int ft_isalpha(int c);
@@ -42,7 +44,7 @@ size_t ft_strlcpy(char *dst, const char *src, size_t size);
 // int ft_memcmp(const void *s1, const void *s2, size_t n);
 // char *ft_strnstr(const char *haystack, const char *needle, size_t len);
 // int ft_atoi(const char *str);
-bool ft_atoi(const char *str, int *num);
+bool ft_atoi(const char *str, long *num);
 
 // char *ft_strdup(const char *s1);
 

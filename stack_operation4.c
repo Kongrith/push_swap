@@ -56,29 +56,36 @@ i++
 */
 void initial_stack(t_list **a, char **argv, int i)
 {
-    int num;
-    // int *ptr;
-    // bool err_flag;
     t_list *tmp;
+    bool err_flag;
+    long num; // int *ptr;
 
-    // err_flag = false;
+    int len;
+
+    tmp = *a;
+    err_flag = false;
     num = 0;
-    // ptr = malloc(sizeof(int) * 3);
     while (argv[++i])
     {
-        // err_flag = chk_alphabet(argv[i]);
-        // if (err_flag)
-        //     show_err_msg();
-        // err_flag = ft_atoi(argv[i], &num);
-        // if (err_flag)
-        //     show_err_msg();
-        error_handler(argv[i], &num);
+        err_flag = error_handler(argv[i], &num);
+        if (err_flag)
+        {
+            freeList(tmp);
+            show_err_msg();
+        }
         insertLast(a, num);
     }
-    // ft_printf("?????\n");
-    // tmp = *a;
+    err_flag = chk_duplicate(a);
+    tmp = *a;
+    if (err_flag)
+    {
+        freeList(tmp);
+        show_err_msg();
+    }
+    // ptr = malloc(sizeof(int) * i);
     // linked_list_to_arr(a, ptr);
-
+    // len = count_stack(&tmp);
+    // ascending_sort(ptr, len);
     // ft_printf("%d\n", ptr[0]);
     // ft_printf("%d\n", ptr[1]);
     // ft_printf("%d\n", ptr[2]);
