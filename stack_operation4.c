@@ -68,9 +68,10 @@ void initial_stack(t_list **a, char **argv, int i)
     while (argv[++i])
     {
         err_flag = error_handler(argv[i], &num);
-        if (err_flag)
+        if (err_flag == true)
         {
-            freeList(tmp);
+            if (tmp != NULL)
+                freeList(tmp);
             show_err_msg();
         }
         insertLast(a, num);

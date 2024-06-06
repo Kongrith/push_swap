@@ -59,7 +59,7 @@ bool ft_atoi(const char *str, long *num)
 
 	err_flag = 0;
 	sign = manage_character((char *)str, &index);
-	if (sign == 0 || str[index] == '\0')
+	if (sign == 0)
 	{
 		err_flag = 1;
 		return (err_flag);
@@ -71,8 +71,8 @@ bool ft_atoi(const char *str, long *num)
 		++index;
 	}
 	*num = input_number * sign;
-	if ((*num) < INT_MIN || INT_MAX < (*num))
-		err_flag = 1;
+	// if ((*num) < INT_MIN || INT_MAX < (*num))
+	// 	err_flag = 1;
 	return (err_flag);
 }
 /*

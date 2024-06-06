@@ -25,7 +25,7 @@ all: $(NAME)
 	@echo "built $(NAME) successfully"
 
 $(NAME): $(OBJS) $(LIBFTPRINTF)
-	$(CXX) -o $(NAME) $(OBJS) -L. -lftprintf -fsanitize=address
+	$(CXX) -o $(NAME) $(OBJS) -L. -lftprintf
 
 $(LIBFTPRINTF): $(OBJ_PRINTF) $(LIBFT)
 	mv $(LIBFT) $(LIBFTPRINTF)

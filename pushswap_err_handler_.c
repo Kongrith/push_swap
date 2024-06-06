@@ -49,6 +49,18 @@ bool chk_duplicate(t_list **tmp)
     return (false);
 }
 
+int ft_isalpha(int c)
+{
+    if (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'))
+    {
+        return (1);
+    }
+    else
+    {
+        return (0);
+    }
+}
+
 /*
 0: ไม่เจอตัวอักษร
 1: เจอตัวอักษร
@@ -61,8 +73,9 @@ bool chk_alphabet(char *str)
     err_flag = false;
     while (str[i])
     {
-        // if (ft_isalpha(str[i]) || str[i] == '.')
-        if (str[i] < 48 || 57 < str[i])
+        if (ft_isalpha(str[i]) || str[i] == '.')
+        // if (str[i] < 43 || str[i] == 44 || (45 < str[i] && str[i] < 48) || 57 < str[i])
+        // if ((45 < str[i] && str[i] < 48) || str[i] == '.')
         {
             err_flag = true;
             return (err_flag);
@@ -79,9 +92,10 @@ bool error_handler(char *str, long *num)
 
     err_flag = false;
     err_flag = chk_alphabet(str);
-    if (err_flag)
-        return (err_flag);
+    if (err_flag == true)
+        return (true);
     err_flag = ft_atoi(str, num);
-    if (err_flag)
-        return (err_flag);
+    if (err_flag == true)
+        return (true);
+    return (err_flag);
 }
