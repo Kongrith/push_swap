@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printdec.c                                      :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkomasat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 18:48:09 by kkomasat          #+#    #+#             */
-/*   Updated: 2024/06/06 22:32:01 by khkomasa         ###   ########.fr       */
+/*   Created: 2023/10/18 23:08:11 by kkomasat          #+#    #+#             */
+/*   Updated: 2024/06/06 22:35:23 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/* 	ft_putchar_fd
+*	write character c on a specified file descriptor
+*
+*	write(fd, buffer, nbytes)
+*/
 
-int	ft_printdec(int n)
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	int	length;
-
-	length = 0;
-	length = count_dec_digit(n);
-	ft_putnbr_fd(n, 1);
-	return (length);
+	write(fd, &c, 1);
 }
+/*
+int	main()
+{
+	char s[] = "abcd";
+	ft_putchar_fd(s[0], 1);
+	return(0);
+}*/

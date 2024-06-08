@@ -1,110 +1,134 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_operation4.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: khkomasa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/06 22:54:20 by khkomasa          #+#    #+#             */
+/*   Updated: 2024/06/06 22:54:22 by khkomasa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 /* push เท่ากับ insertFront
  */
-void push(t_list **head, int new_data)
+void	push(t_list **head, int new_data)
 {
-    t_list *newNode;
-    t_list *tmp;
+	t_list	*newnode;
+	t_list	*tmp;
 
-    tmp = *head;
-    newNode = malloc(sizeof(t_list));
-    newNode->data = new_data;
-    if (*head == NULL)
-    {
-        newNode->next = NULL;
-        newNode->prev = NULL;
-        *head = newNode;
-    }
-    else
-    {
-        tmp->prev = newNode;
-        newNode->next = *head;
-        newNode->prev = NULL;
-        *head = newNode;
-    }
+	tmp = *head;
+	newnode = malloc(sizeof(t_list));
+	newnode -> data = new_data;
+	if (*head == NULL)
+	{
+		newnode -> next = NULL;
+		newnode -> prev = NULL;
+		*head = newnode;
+	}
+	else
+	{
+		tmp -> prev = newnode;
+		newnode -> next = *head;
+		newnode -> prev = NULL;
+		*head = newnode;
+	}
 }
-int pop(t_list **head)
-{
-    t_list *tmp;
-    int pop_data;
-    int len;
 
-    if (*head == NULL)
-        return 0;
-    len = count_stack(head);
-    tmp = *head;
-    if (len > 1)
-    {
-        *head = tmp->next;
-        pop_data = tmp->data;
-        free(tmp);
-        (*head)->prev = NULL;
-    }
-    else
-    {
-        *head = NULL;
-        pop_data = tmp->data;
-        free(tmp);
-    }
-    return (pop_data);
+int	pop(t_list **head)
+{
+	t_list	*tmp;
+	int		pop_data;
+	int		len;
+
+	if (*head == NULL)
+		return (0);
+	len = count_stack(head);
+	tmp = *head;
+	if (len > 1)
+	{
+		*head = tmp -> next;
+		pop_data = tmp->data;
+		free (tmp);
+		(*head)-> prev = NULL;
+	}
+	else
+	{
+		*head = NULL;
+		pop_data = tmp -> data;
+		free (tmp);
+	}
+	return (pop_data);
 }
 
 /*
 ++i
 i++
 */
-void initial_stack(t_list **a, char **argv, int i)
+void	initial_stack(t_list **a, char **argv, int i)
 {
-<<<<<<< HEAD
-    long num;
-    bool err_flag;
+	long	num;
+	bool	err_flag;
 
-=======
-    t_list *tmp;
-    bool err_flag;
-    long num; // int *ptr;
+	err_flag = false;
+	num = 0;
+	while (argv[++i])
+	{
+		error_handler(argv[i], &num);
+		insert_last(a, num);
+	}
+	err_flag = chk_duplicate(a);
+	if (err_flag == true)
+		show_err_msg();
+}
 
-    int len;
+void	min_val_confirmation(t_list **stack_a)
+{
+	int		min_value;
+	int		min_index;
+	bool	above_mid;
+	int		mid;
+	int		len_stack_a;
 
-    tmp = *a;
->>>>>>> c3c3767ed48e837cc1f0a396a401127cae35df01
-    err_flag = false;
-    num = 0;
-    while (argv[++i])
-    {
-<<<<<<< HEAD
-        error_handler(argv[i], &num);
-        insertLast(a, num);
-    }
-    err_flag = chk_duplicate(a);
-    if (err_flag == true)
-        show_err_msg();
-=======
-        err_flag = error_handler(argv[i], &num);
-        if (err_flag == true)
-        {
-            if (tmp != NULL)
-                freeList(tmp);
-            show_err_msg();
-        }
-        insertLast(a, num);
-    }
-    err_flag = chk_duplicate(a);
-    tmp = *a;
-    if (err_flag)
-    {
-        freeList(tmp);
-        show_err_msg();
-    }
-    // ptr = malloc(sizeof(int) * i);
-    // linked_list_to_arr(a, ptr);
-    // len = count_stack(&tmp);
-    // ascending_sort(ptr, len);
-    // ft_printf("%d\n", ptr[0]);
-    // ft_printf("%d\n", ptr[1]);
-    // ft_printf("%d\n", ptr[2]);
-    // free(ptr);
-    // free(tmp);
->>>>>>> c3c3767ed48e837cc1f0a396a401127cae35df01
+	len_stack_a = count_stack(stack_a);
+	min_value = find_minmax_data(stack_a, 1);
+	min_index = find_index_from_val(stack_a, min_value);
+	if (min_index != 0)
+	{
+		mid = find_mid_of_stack(len_stack_a);
+		if (min_index < mid)
+			above_mid = false;
+		else
+			above_mid = true;
+		swap_stack_a(stack_a, min_index, len_stack_a, above_mid);
+	}
+}
+
+/*
+หา index ของ stack ที่มี push cost น้อยที่สุด
+*/
+int	calc_min_pushcost(t_list **stack, int *min_index)
+{
+	t_list	*tmp_a;
+	int		target;
+	int		min_cost;
+
+	tmp_a = *stack;
+	*min_index = 0;
+	min_cost = INT_MAX;
+	while (tmp_a != NULL)
+	{
+		if (tmp_a -> push_cost == 0)
+			return (tmp_a -> target);
+		if (tmp_a->push_cost < min_cost)
+		{
+			min_cost = tmp_a -> push_cost;
+			*min_index = tmp_a -> index;
+			target = tmp_a -> target;
+		}
+		tmp_a = tmp_a -> next;
+	}
+	return (target);
 }

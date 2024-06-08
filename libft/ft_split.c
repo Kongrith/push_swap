@@ -6,7 +6,7 @@
 /*   By: kkomasat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:44:45 by kkomasat          #+#    #+#             */
-/*   Updated: 2023/10/31 10:50:38 by kkomasat         ###   ########.fr       */
+/*   Updated: 2024/06/06 22:36:35 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
  */
 
 #include "libft.h"
-// #include <stdio.h>
 
-static size_t count_char_section(char *ptr, char c)
+static size_t	count_char_section(char *ptr, char c)
 {
-	size_t count;
-	size_t i;
+	size_t	count;
+	size_t	i;
 
 	count = 0;
 	i = 0;
@@ -40,9 +39,9 @@ static size_t count_char_section(char *ptr, char c)
 	return (count);
 }
 
-static char *find_chr_or_delimiter(char *ptr, char c, int string_flag)
+static char	*find_chr_or_delimiter(char *ptr, char c, int string_flag)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (ptr[i] != '\0')
@@ -62,11 +61,11 @@ static char *find_chr_or_delimiter(char *ptr, char c, int string_flag)
 	return (0);
 }
 
-static char *split_string(char *s, char c)
+static char	*split_string(char *s, char c)
 {
-	char *string;
-	char *ptr;
-	size_t len;
+	char	*string;
+	char	*ptr;
+	size_t	len;
 
 	ptr = s;
 	len = 0;
@@ -78,15 +77,14 @@ static char *split_string(char *s, char c)
 		free(string);
 		return (NULL);
 	}
-
 	ft_strlcpy(string, s, len + 1);
 	return (string);
 }
 
-static void split_to_str_arr(char **string_array, char *ptr,
-							 char c, size_t num_split)
+static void	split_to_str_arr(char **string_array, char *ptr,
+char c, size_t num_split)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < num_split)
@@ -99,11 +97,11 @@ static void split_to_str_arr(char **string_array, char *ptr,
 	}
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **string_array;
-	char *ptr;
-	size_t num_split;
+	char	**string_array;
+	char	*ptr;
+	size_t	num_split;
 
 	if (!s || !*s)
 	{
@@ -121,7 +119,6 @@ char **ft_split(char const *s, char c)
 		free(string_array);
 		return (NULL);
 	}
-
 	string_array[num_split] = NULL;
 	split_to_str_arr(string_array, ptr, c, num_split);
 	return (string_array);
