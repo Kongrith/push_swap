@@ -14,34 +14,34 @@
 
 /* push เท่ากับ insertFront
  */
-void	push(t_list **head, int new_data)
+void push(t_list **head, int new_data)
 {
-	t_list	*newnode;
-	t_list	*tmp;
+	t_list *newnode;
+	t_list *tmp;
 
 	tmp = *head;
 	newnode = malloc(sizeof(t_list));
-	newnode -> data = new_data;
+	newnode->data = new_data;
 	if (*head == NULL)
 	{
-		newnode -> next = NULL;
-		newnode -> prev = NULL;
+		newnode->next = NULL;
+		newnode->prev = NULL;
 		*head = newnode;
 	}
 	else
 	{
-		tmp -> prev = newnode;
-		newnode -> next = *head;
-		newnode -> prev = NULL;
+		tmp->prev = newnode;
+		newnode->next = *head;
+		newnode->prev = NULL;
 		*head = newnode;
 	}
 }
 
-int	pop(t_list **head)
+int pop(t_list **head)
 {
-	t_list	*tmp;
-	int		pop_data;
-	int		len;
+	t_list *tmp;
+	int pop_data;
+	int len;
 
 	if (*head == NULL)
 		return (0);
@@ -49,16 +49,16 @@ int	pop(t_list **head)
 	tmp = *head;
 	if (len > 1)
 	{
-		*head = tmp -> next;
+		*head = tmp->next;
 		pop_data = tmp->data;
-		free (tmp);
-		(*head)-> prev = NULL;
+		free(tmp);
+		(*head)->prev = NULL;
 	}
 	else
 	{
 		*head = NULL;
-		pop_data = tmp -> data;
-		free (tmp);
+		pop_data = tmp->data;
+		free(tmp);
 	}
 	return (pop_data);
 }
@@ -67,30 +67,48 @@ int	pop(t_list **head)
 ++i
 i++
 */
-void	initial_stack(t_list **a, char **argv, int i)
+void initial_stack(t_list **a, char **argv, int i)
 {
-	long	num;
-	bool	err_flag;
+	long num;
+	bool err_flag;
+	bool is_double_ptr;
 
 	err_flag = false;
+	is_double_ptr = false;
+	if (i == -1)
+		is_double_ptr = true;
 	num = 0;
+	// ft_printf("initial err flag: %d\n", err_flag);
 	while (argv[++i])
 	{
-		error_handler(argv[i], &num);
+		err_flag = error_handler(argv[i], &num);
+		// ft_printf("err flag after error_handler: %d\n", err_flag);
+		if (err_flag == true)
+		{
+			freelist(*a);
+			if (is_double_ptr)
+				free_double_pointer(argv);
+			show_err_msg();
+		}
 		insert_last(a, num);
 	}
 	err_flag = chk_duplicate(a);
 	if (err_flag == true)
+	{
+		freelist(*a);
+		if (is_double_ptr)
+			free_double_pointer(argv);
 		show_err_msg();
+	}
 }
 
-void	min_val_confirmation(t_list **stack_a)
+void min_val_confirmation(t_list **stack_a)
 {
-	int		min_value;
-	int		min_index;
-	bool	above_mid;
-	int		mid;
-	int		len_stack_a;
+	int min_value;
+	int min_index;
+	bool above_mid;
+	int mid;
+	int len_stack_a;
 
 	len_stack_a = count_stack(stack_a);
 	min_value = find_minmax_data(stack_a, 1);
@@ -109,26 +127,26 @@ void	min_val_confirmation(t_list **stack_a)
 /*
 หา index ของ stack ที่มี push cost น้อยที่สุด
 */
-int	calc_min_pushcost(t_list **stack, int *min_index)
+int calc_min_pushcost(t_list **stack, int *min_index)
 {
-	t_list	*tmp_a;
-	int		target;
-	int		min_cost;
+	t_list *tmp_a;
+	int target;
+	int min_cost;
 
 	tmp_a = *stack;
 	*min_index = 0;
 	min_cost = INT_MAX;
 	while (tmp_a != NULL)
 	{
-		if (tmp_a -> push_cost == 0)
-			return (tmp_a -> target);
+		if (tmp_a->push_cost == 0)
+			return (tmp_a->target);
 		if (tmp_a->push_cost < min_cost)
 		{
-			min_cost = tmp_a -> push_cost;
-			*min_index = tmp_a -> index;
-			target = tmp_a -> target;
+			min_cost = tmp_a->push_cost;
+			*min_index = tmp_a->index;
+			target = tmp_a->target;
 		}
-		tmp_a = tmp_a -> next;
+		tmp_a = tmp_a->next;
 	}
 	return (target);
 }

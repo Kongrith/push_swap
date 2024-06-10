@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-void	show_err_msg(void)
+void show_err_msg(void)
 {
 	write(2, "Error\n", 6);
 	exit(EXIT_SUCCESS);
 }
 
-bool	chk_duplicate(t_list **tmp)
+bool chk_duplicate(t_list **tmp)
 {
-	int	*ptr;
-	int	len;
-	int	i;
+	int *ptr;
+	int len;
+	int i;
 
 	len = count_stack(tmp);
 	ptr = malloc(sizeof(int) * len);
@@ -38,7 +38,7 @@ bool	chk_duplicate(t_list **tmp)
 		}
 		i++;
 	}
-	free (ptr);
+	free(ptr);
 	return (false);
 }
 
@@ -47,16 +47,16 @@ bool	chk_duplicate(t_list **tmp)
 1: เจอตัวอักษร
 */
 
-bool	chk_alphabet(char *str)
+bool chk_alphabet(char *str)
 {
-	int		i;
-	bool	err_flag;
+	int i;
+	bool err_flag;
 
 	i = 0;
 	err_flag = false;
 	while (str[i])
 	{
-		if (ft_isalpha(str[i]) || str[i] == '.' || str[i] == '!')
+		if (ft_isalpha(str[i]) || str[i] == '.')
 		{
 			err_flag = true;
 			return (err_flag);
@@ -66,15 +66,31 @@ bool	chk_alphabet(char *str)
 	return (err_flag);
 }
 
-void	error_handler(char *str, long *num)
+bool error_handler(char *str, long *num)
 {
-	bool	err_flag;
+	bool err_flag;
 
+	// ft_printf("INT_MAX: %d", INT_MAX);
 	err_flag = false;
 	err_flag = chk_alphabet(str);
+	// ft_printf("err flag alphabet: %d\n", err_flag);
 	if (err_flag == true)
-		show_err_msg();
+		return (err_flag);
+	// if (err_flag == true)
+	// {
+	// 	freelist(*a);
+	// 	free_double_pointer(argv);
+	// 	show_err_msg();
+	// }
+	// if (err_flag == true)
+	// 	show_err_msg();
 	err_flag = ft_atoi(str, num);
+	// ft_printf("err flag atoi: %d\n", err_flag);
 	if (err_flag == true)
-		show_err_msg();
+		return (err_flag);
+	// ft_printf("num: %d\n", *num);
+	// ft_printf("str %s\n", str);
+	return (err_flag);
+	// if (err_flag == true)
+	// 	show_err_msg();
 }

@@ -23,7 +23,7 @@ OBJ_PRINTF = $(SRC_PRINTF:.c=.o)
 all: $(NAME)
 	@echo "built $(NAME) successfully"
 
-$(NAME): $(OBJS) $(LIBFTPRINTF)
+$(NAME): $(OBJS) $(LIBFTPRINTF)					
 	@$(CXX) -o $(NAME) $(OBJS) -L. -lftprintf 
 
 
@@ -38,7 +38,7 @@ $(LIBFT): $(OBJ_LIBFT)
 	@ar rcs $(LIBFT) $(OBJ_LIBFT)
 
 %.o: %.c push_swap.h ft_printf.h ./libft/libft.h
-	@$(CXX) $(CCFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CXX) $(CCFLAGS) $(IFLAGS) -c $< -o $@	
 
 clean:
 	@rm -f $(OBJS) $(OBJ_PRINTF)

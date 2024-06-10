@@ -12,21 +12,11 @@
 
 #include "libft.h"
 
-static int	ft_isspace(int ch)
+static int manage_character(char *str, int *ptr)
 {
-	if ((9 <= ch && ch <= 13) || ch == 32)
-	{
-		return (1);
-	}
-	else
-		return (0);
-}
-
-static int	manage_character(char *str, int *ptr)
-{
-	int	sign;
-	int	flag;
-	int	index;
+	int sign;
+	int flag;
+	int index;
 
 	sign = 1;
 	flag = 0;
@@ -50,9 +40,9 @@ static int	manage_character(char *str, int *ptr)
 	return (sign);
 }
 
-bool	chk_overflow(long *num, long input_number, int sign)
+bool chk_overflow(long *num, long input_number, int sign)
 {
-	bool	err_flag;
+	bool err_flag;
 
 	*num = input_number * sign;
 	err_flag = false;
@@ -61,12 +51,12 @@ bool	chk_overflow(long *num, long input_number, int sign)
 	return (err_flag);
 }
 
-bool	ft_atoi(const char *str, long *num)
+bool ft_atoi(const char *str, long *num)
 {
-	long	input_number;
-	int		sign;
-	int		index;
-	bool	err_flag;
+	long input_number;
+	int sign;
+	int index;
+	bool err_flag;
 
 	err_flag = 0;
 	sign = manage_character((char *)str, &index);
