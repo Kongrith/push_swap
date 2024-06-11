@@ -12,94 +12,109 @@
 
 #include "push_swap.h"
 
-int find_size_buffer(int argc, char **argv)
+void	post_operation(t_list **stack_a, t_list **stack_b, int index_stack_a,
+					int index_stack_b)
 {
-	int i;
-	int j;
-	int len;
+	int		len_stack_a;
+	int		len_stack_b;
+	bool	above_mid_stack_a;
+	bool	above_mid_stack_b;
 
-	i = 1;
-	len = 0;
-	while (i < argc)
+	len_stack_a = count_stack(stack_a);
+	len_stack_b = count_stack(stack_b);
+	above_mid_stack_a = chk_mid(find_mid_of_stack(len_stack_a), index_stack_a);
+	above_mid_stack_b = chk_mid(find_mid_of_stack(len_stack_b), index_stack_b);
+	swap_stack_a(stack_a, index_stack_a, len_stack_a, above_mid_stack_a);
+	swap_stack_b(stack_b, index_stack_b, len_stack_b, above_mid_stack_b);
+}
+
+void	ss_rr(t_list **stack_a, t_list **stack_b,
+int index_stack_a, int index_stack_b)
+{
+	if (index_stack_a == 1 && index_stack_b == 1)
+		ss(stack_a, stack_b);
+	else
+		rr(stack_a, stack_b);
+	index_stack_a--;
+	index_stack_b--;
+}
+
+// Joint instructions(ss, rr, rrr);
+void	joint_instructions(t_list **stack_a, t_list **stack_b,
+						int index_stack_a, int index_stack_b)
+{
+	int		len_stack_a;
+	int		len_stack_b;
+	bool	above_mid_stack_a;
+	bool	above_mid_stack_b;
+
+	len_stack_a = count_stack(stack_a);
+	len_stack_b = count_stack(stack_b);
+	above_mid_stack_a = chk_mid(find_mid_of_stack(len_stack_a), index_stack_a);
+	above_mid_stack_b = chk_mid(find_mid_of_stack(len_stack_b), index_stack_b);
+	while ((0 < index_stack_a && index_stack_a < len_stack_a) && \
+	(0 < index_stack_b && index_stack_b < len_stack_b))
 	{
-		j = 0;
-		while (argv[i][j] != '\0')
+		if (above_mid_stack_a && above_mid_stack_b)
 		{
-			j++;
-			len++;
+			rrr(stack_a, stack_b);
+			index_stack_a++;
+			index_stack_b++;
 		}
-		i++;
-	}
-	return (len);
-}
-
-void clean_newline(char *buffer)
-{
-	int i;
-
-	i = 0;
-	while (buffer[i])
-	{
-		ft_printf("ch[%d] %d\n", i, buffer[i]);
-		if (buffer[i] == '\n')
-			buffer[i] = ' ';
-		i++;
-	}
-}
-
-char *input_concatenation(int argc, char **argv)
-{
-	int i;
-	int j;
-	char **ptr_arr;
-	char *buffer;
-	int len;
-	long num;
-
-	len = find_size_buffer(argc, argv);
-	buffer = malloc(sizeof(char) * len + 1);
-	buffer[0] = '\0';
-	i = 1;
-	while (i < argc)
-	{
-		// ft_printf("i:%d\n", i);
-		if (chk_input_buffer(argv[i]) || ft_atoi(argv[i], &num) || chk_alphabet(argv[i]))
+		else
 		{
-			free(buffer);
-			show_err_msg();
+			ss_rr(stack_a, stack_b, index_stack_a, index_stack_b);
 		}
-		// j = 0;
-		// ptr_arr = ft_split(argv[i], ' ');
-		// while (ptr_arr[j] != NULL)
-		// {
-		// 	ft_strlcat(buffer, ptr_arr[j], 100);
-
-		// 	j++;
-		// }
-		ft_strlcat(buffer, argv[i], 200);
-		ft_strlcat(buffer, " ", 200);
-		i++;
 	}
-	// buffer[i] = '\0';
-	// free_double_pointer(ptr_arr);
-	// ft_printf("before clean buffer:%s\n", buffer);
-	// clean_newline(buffer);
-	return (buffer);
+	post_operation(stack_a, stack_b, index_stack_a, index_stack_b);
 }
 
-void chk_input_arg(char **argv)
+void	push_decision_to_a(t_list **stack_a, t_list **stack_b,
+						int len_stack_a, int len_stack_b)
 {
-	bool err_flag;
+	int		target;
+	int		index_stack_a;
+	int		index_stack_b;
+	bool	above_mid_stack_a;
+	bool	above_mid_stack_b;
 
-	err_flag = false;
-	if (argv[1][0] == '\0')
-		err_flag = true;
-	if (ft_strchr(argv[1], '!') != NULL)
-		err_flag = true;
-	if (is_empty(argv[1]) == true)
-		err_flag = true;
-	if (err_flag == true)
+	target = calc_min_pushcost(stack_b, &index_stack_b);
+	index_stack_a = find_index_of_target(stack_a, target, len_stack_a);
+	above_mid_stack_a = chk_mid(find_mid_of_stack(len_stack_a), index_stack_a);
+	above_mid_stack_b = chk_mid(find_mid_of_stack(len_stack_b), index_stack_b);
+	if (above_mid_stack_a && above_mid_stack_b)
 	{
-		show_err_msg();
+		joint_instructions(stack_a, stack_b, index_stack_a, index_stack_b);
 	}
+	else
+	{
+		swap_stack_a(stack_a, index_stack_a, len_stack_a, above_mid_stack_a);
+		swap_stack_b(stack_b, index_stack_b, len_stack_b, above_mid_stack_b);
+	}
+	pa(stack_a, stack_b);
+}
+
+void	push_decision_to_b(t_list **stack_a, t_list **stack_b,
+						int len_stack_a, int len_stack_b)
+{
+	int		target;
+	int		index_stack_a;
+	int		index_stack_b;
+	bool	above_mid_stack_a;
+	bool	above_mid_stack_b;
+
+	target = calc_min_pushcost(stack_a, &index_stack_a);
+	index_stack_b = find_index_of_target(stack_b, target, len_stack_b);
+	above_mid_stack_b = chk_mid(find_mid_of_stack(len_stack_b), index_stack_b);
+	above_mid_stack_a = chk_mid(find_mid_of_stack(len_stack_a), index_stack_a);
+	if (above_mid_stack_a && above_mid_stack_b)
+	{
+		joint_instructions(stack_a, stack_b, index_stack_a, index_stack_b);
+	}
+	else
+	{
+		swap_stack_a(stack_a, index_stack_a, len_stack_a, above_mid_stack_a);
+		swap_stack_b(stack_b, index_stack_b, len_stack_b, above_mid_stack_b);
+	}
+	pb(stack_a, stack_b);
 }

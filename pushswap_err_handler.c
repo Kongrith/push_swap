@@ -18,20 +18,6 @@ void show_err_msg(void)
 	exit(EXIT_SUCCESS);
 }
 
-bool is_empty(const char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (!ft_isspace((unsigned char)str[i]))
-			return 0;
-		i++;
-	}
-	return 1;
-}
-
 bool chk_duplicate(t_list **tmp)
 {
 	int *ptr;
@@ -70,7 +56,7 @@ bool chk_alphabet(char *str)
 	err_flag = false;
 	while (str[i])
 	{
-		if (ft_isalpha(str[i]) || str[i] == '.' || str[i] == ',')
+		if (ft_isalpha(str[i]) || str[i] == '.' || str[i] == '!' || str[i] == ',')
 		{
 			err_flag = true;
 			return (err_flag);
@@ -84,27 +70,15 @@ bool error_handler(char *str, long *num)
 {
 	bool err_flag;
 
-	// ft_printf("INT_MAX: %d", INT_MAX);
 	err_flag = false;
 	err_flag = chk_alphabet(str);
-	// ft_printf("err flag alphabet: %d\n", err_flag);
 	if (err_flag == true)
 		return (err_flag);
-	// if (err_flag == true)
-	// {
-	// 	freelist(*a);
-	// 	free_double_pointer(argv);
-	// 	show_err_msg();
-	// }
-	// if (err_flag == true)
-	// 	show_err_msg();
+	err_flag = is_empty(str);
+	if (err_flag == true)
+		return (err_flag);
 	err_flag = ft_atoi(str, num);
-	// ft_printf("err flag atoi: %d\n", err_flag);
-	if (err_flag == true)
-		return (err_flag);
-	// ft_printf("num: %d\n", *num);
-	// ft_printf("str %s\n", str);
-	return (err_flag);
 	// if (err_flag == true)
 	// 	show_err_msg();
+	return (err_flag);
 }

@@ -11,6 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
+static int ft_isspace(int ch)
+{
+	if ((9 <= ch && ch <= 13) || ch == 32)
+	{
+		return (1);
+	}
+	else
+		return (0);
+}
 
 static int manage_character(char *str, int *ptr)
 {

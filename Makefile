@@ -10,7 +10,7 @@ CFLAGS = -Wall -Werror -Wextra
 IFLAGS = -I.
 
 SRCS = push_swap.c three_sorting.c four_sorting.c five_sorting.c turk_algorithm.c chk_sorting.c \
-	stack_operation1.c stack_operation2.c stack_operation3.c stack_operation4.c stack_operation5.c\
+	stack_operation1.c stack_operation2.c stack_operation3.c stack_operation4.c pushswap_util_5.c \
 	pushswap_util_1.c  pushswap_util_2.c pushswap_util_3.c pushswap_util_4.c \
 	push_swap_stack_a_utils.c push_swap_stack_b_utils.c pushswap_err_handler.c
 	
@@ -23,7 +23,7 @@ OBJ_PRINTF = $(SRC_PRINTF:.c=.o)
 all: $(NAME)
 	@echo "built $(NAME) successfully"
 
-$(NAME): $(OBJS) $(LIBFTPRINTF)					
+$(NAME): $(OBJS) $(LIBFTPRINTF)
 	@$(CXX) -o $(NAME) $(OBJS) -L. -lftprintf 
 
 
@@ -38,7 +38,7 @@ $(LIBFT): $(OBJ_LIBFT)
 	@ar rcs $(LIBFT) $(OBJ_LIBFT)
 
 %.o: %.c push_swap.h ft_printf.h ./libft/libft.h
-	@$(CXX) $(CCFLAGS) $(IFLAGS) -c $< -o $@	
+	@$(CXX) $(CCFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS) $(OBJ_PRINTF)

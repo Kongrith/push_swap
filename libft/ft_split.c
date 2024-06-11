@@ -17,6 +17,7 @@
  */
 
 #include "libft.h"
+// #include <stdio.h>
 
 static size_t count_char_section(char *ptr, char c)
 {
@@ -107,10 +108,7 @@ char **ft_split(char const *s, char c)
 	{
 		string_array = malloc(sizeof(char *) * 1);
 		if (!string_array)
-		{
-			free(string_array);
 			return (NULL);
-		}
 		*string_array = (void *)0;
 		return (string_array);
 	}
@@ -146,4 +144,20 @@ char **ft_split(char const *s, char c)
 // 	for (int i = 0; i < 5; i++)
 // 		printf("[%d] %s\n", i, pointer_arrays[i]);
 // 	// printf("ft_split: %s\n", ft_split(s1, delimiter)[0]);
+// }
+
+// int main()
+// {
+// 	char *s1 = "   ";
+// 	char **ptr;
+// 	int i;
+
+// 	ptr = ft_split(s1, ' ');
+// 	i = 0;
+// 	while (ptr[i] != NULL)
+// 	{
+// 		printf("%s\n", ptr[i]);
+// 		i++;
+// 	}
+// 	return (0);
 // }
