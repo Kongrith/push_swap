@@ -27,6 +27,7 @@ void *ft_memmove(void *dst, const void *src, size_t len);
 size_t ft_strlcpy(char *dst, const char *src, size_t size);
 char *ft_strchr(const char *s, int c);
 bool ft_atoi(const char *str, long *num);
+size_t ft_strlcat(char *dest0, const char *src0, size_t size);
 
 // custom functions from 42bangkok
 char **ft_split(char const *s, char c);

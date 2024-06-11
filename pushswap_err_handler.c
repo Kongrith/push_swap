@@ -18,6 +18,20 @@ void show_err_msg(void)
 	exit(EXIT_SUCCESS);
 }
 
+bool is_empty(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!ft_isspace((unsigned char)str[i]))
+			return 0;
+		i++;
+	}
+	return 1;
+}
+
 bool chk_duplicate(t_list **tmp)
 {
 	int *ptr;
@@ -56,7 +70,7 @@ bool chk_alphabet(char *str)
 	err_flag = false;
 	while (str[i])
 	{
-		if (ft_isalpha(str[i]) || str[i] == '.')
+		if (ft_isalpha(str[i]) || str[i] == '.' || str[i] == ',')
 		{
 			err_flag = true;
 			return (err_flag);

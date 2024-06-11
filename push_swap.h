@@ -102,5 +102,11 @@ bool error_handler(char *str, long *num);
 bool chk_duplicate(t_list **tmp);
 int chk_mid(int mid, int index);
 bool chk_sorting(t_list **stack);
+bool is_empty(const char *str);
+void chk_input_arg(char **argv);
+char *input_concatenation(int argc, char **argv);
+int find_size_buffer(int argc, char **argv);
+bool chk_input_buffer(char *buffer);
+bool chk_alphabet(char *str);
 
 #endif

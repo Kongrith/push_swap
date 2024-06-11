@@ -85,7 +85,8 @@ void initial_stack(t_list **a, char **argv, int i)
 		// ft_printf("err flag after error_handler: %d\n", err_flag);
 		if (err_flag == true)
 		{
-			freelist(*a);
+			if (*a)
+				freelist(*a);
 			if (is_double_ptr)
 				free_double_pointer(argv);
 			show_err_msg();
@@ -95,7 +96,8 @@ void initial_stack(t_list **a, char **argv, int i)
 	err_flag = chk_duplicate(a);
 	if (err_flag == true)
 	{
-		freelist(*a);
+		if (*a)
+			freelist(*a);
 		if (is_double_ptr)
 			free_double_pointer(argv);
 		show_err_msg();
