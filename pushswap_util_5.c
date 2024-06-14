@@ -27,14 +27,12 @@ bool is_empty(const char *str)
 {
     int i;
     bool err_flag;
-    // printf("chk_space\n");
     err_flag = false;
     i = 0;
     while (str[i] != '\0')
     {
         if (chk_space((unsigned char)str[i]) == true)
         {
-            // printf("chk_space\n");
             err_flag = true;
             return (err_flag);
         }
