@@ -61,6 +61,8 @@ bool chk_alphabet(char *str)
 			err_flag = true;
 			return (err_flag);
 		}
+		if (str[i] == '\n')
+			str[i] = ' ';
 		i++;
 	}
 	return (err_flag);
@@ -78,6 +80,5 @@ bool error_handler(char *str, long *num)
 	if (err_flag == true)
 		return (err_flag);
 	err_flag = ft_atoi(str, num);
-	// ft_printf("ft_atoi: %s", err_flag ? "true" : "false");
 	return (err_flag);
 }

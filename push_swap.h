@@ -103,5 +103,5 @@ bool chk_duplicate(t_list **tmp);
 int chk_mid(int mid, int index);
 bool chk_sorting(t_list **stack);
 bool is_empty(const char *str);
-
+bool chk_alphabet(char *str);
 #endif

@@ -92,6 +92,8 @@ void initial_stack(t_list **a, char **argv, int i)
 		insert_last(a, num);
 	}
 	err_flag = chk_duplicate(a);
+	// ft_printf("err_flag: %s\n", err_flag ? "true" : "false");
+	// ft_printf("free_double_pointer: %s\n", free_double_pointer ? "true" : "false");
 	if (err_flag == true)
 	{
 		if (*a != NULL)

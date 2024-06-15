@@ -6,7 +6,7 @@
 /*   By: kkomasat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 22:44:45 by kkomasat          #+#    #+#             */
-/*   Updated: 2024/06/06 22:36:35 by khkomasa         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:20:34 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
  */
 
 #include "libft.h"
-// #include <stdio.h>
 
 static size_t count_char_section(char *ptr, char c)
 {
@@ -144,20 +143,4 @@ char **ft_split(char const *s, char c)
 // 	for (int i = 0; i < 5; i++)
 // 		printf("[%d] %s\n", i, pointer_arrays[i]);
 // 	// printf("ft_split: %s\n", ft_split(s1, delimiter)[0]);
-// }
-
-// int main()
-// {
-// 	char *s1 = "   ";
-// 	char **ptr;
-// 	int i;
-
-// 	ptr = ft_split(s1, ' ');
-// 	i = 0;
-// 	while (ptr[i] != NULL)
-// 	{
-// 		printf("%s\n", ptr[i]);
-// 		i++;
-// 	}
-// 	return (0);
 // }
