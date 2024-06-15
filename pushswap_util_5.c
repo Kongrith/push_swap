@@ -6,13 +6,13 @@
 /*   By: khkomasa <khkomasa@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 00:11:33 by khkomasa          #+#    #+#             */
-/*   Updated: 2024/06/15 14:43:03 by khkomasa         ###   ########.fr       */
+/*   Updated: 2024/06/15 15:16:38 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int chk_space(int ch)
+static int	chk_space(int ch)
 {
 	if ((9 <= ch && ch <= 13) || ch == 32)
 	{
@@ -22,11 +22,11 @@ static int chk_space(int ch)
 		return (0);
 }
 
-bool is_empty(const char *str)
+bool	is_empty(const char *str)
 {
-	int i;
-	int space_count;
-	bool err_flag;
+	int		i;
+	int		space_count;
+	bool	err_flag;
 
 	i = 0;
 	space_count = 0;
@@ -43,10 +43,10 @@ bool is_empty(const char *str)
 	return (err_flag);
 }
 
-int count_in_argv(int argc, char **argv)
+int	count_in_argv(int argc, char **argv)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 1;
 	len = 0;

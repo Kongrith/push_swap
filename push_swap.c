@@ -6,17 +6,17 @@
 /*   By: khkomasa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 22:44:18 by khkomasa          #+#    #+#             */
-/*   Updated: 2024/06/15 15:01:46 by khkomasa         ###   ########.fr       */
+/*   Updated: 2024/06/15 15:18:37 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool chk_input_args(int argc, char **argv)
+bool	chk_input_args(int argc, char **argv)
 {
-	int i;
-	long num;
-	bool err_flag;
+	int		i;
+	long	num;
+	bool	err_flag;
 
 	i = 1;
 	err_flag = false;
@@ -36,11 +36,11 @@ bool chk_input_args(int argc, char **argv)
 	return (err_flag);
 }
 
-char *argv_concatenate(int argc, char **argv)
+char	*argv_concatenate(int argc, char **argv)
 {
-	int i;
-	int len;
-	char *buf;
+	int		i;
+	int		len;
+	char	*buf;
 
 	i = 1;
 	len = count_in_argv(argc, argv);
@@ -56,15 +56,15 @@ char *argv_concatenate(int argc, char **argv)
 	return (buf);
 }
 
-static void push_swap(t_list **a, t_list **b)
+static void	push_swap(t_list **a, t_list **b)
 {
-	int len;
-	bool is_sorted;
+	int		len;
+	bool	is_sorted;
 
 	is_sorted = chk_sorting(a);
 	len = count_stack(a);
 	if (len < 2)
-		return;
+		return ;
 	else if (len == 2)
 	{
 		if (!is_sorted)
@@ -80,39 +80,43 @@ static void push_swap(t_list **a, t_list **b)
 		turk_algorithm(a, b);
 }
 
-int main(int argc, char **argv)
+t_list	*command_argument_management(int argc, char **argv, t_list *stack_a)
 {
-	t_list *stack_a;
-	t_list *stack_b;
-	bool is_sorted;
-	char *buf;
+	char	*buf;
+
+	if (argc > 2)
+	{
+		if (chk_input_args(argc, argv) == true)
+			show_err_msg();
+		buf = argv_concatenate(argc, argv);
+		ft_strlcpy(argv[1], buf, ft_strlen(buf) + 1);
+		argc = 2;
+		free(buf);
+	}
+	if (ft_strchr(argv[1], '!') != NULL)
+		show_err_msg();
+	argv = ft_split(argv[1], ' ');
+	if (argv[0] == NULL)
+	{
+		free_double_pointer(argv);
+		show_err_msg();
+	}
+	initial_stack(&stack_a, argv, -1);
+	free_double_pointer(argv);
+	return (stack_a);
+}
+
+int	main(int argc, char **argv)
+{
+	t_list	*stack_a;
+	t_list	*stack_b;
+	bool	is_sorted;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1)
 		return (0);
-	else
-	{
-		if (argc > 2)
-		{
-			if (chk_input_args(argc, argv) == true)
-				show_err_msg();
-			buf = argv_concatenate(argc, argv);
-			ft_strlcpy(argv[1], buf, ft_strlen(buf) + 1);
-			argc = 2;
-			free(buf);
-		}
-		if (ft_strchr(argv[1], '!') != NULL)
-			show_err_msg();
-		argv = ft_split(argv[1], ' ');
-		if (argv[0] == NULL)
-		{
-			free_double_pointer(argv);
-			show_err_msg();
-		}
-		initial_stack(&stack_a, argv, -1);
-		free_double_pointer(argv);
-	}
+	stack_a = command_argument_management(argc, argv, stack_a);
 	is_sorted = chk_sorting(&stack_a);
 	if (!is_sorted)
 		push_swap(&stack_a, &stack_b);
