@@ -6,23 +6,23 @@
 /*   By: khkomasa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 22:50:45 by khkomasa          #+#    #+#             */
-/*   Updated: 2024/06/06 22:50:46 by khkomasa         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:59:34 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void show_err_msg(void)
+void	show_err_msg(void)
 {
 	write(2, "Error\n", 6);
 	exit(EXIT_SUCCESS);
 }
 
-bool chk_duplicate(t_list **tmp)
+bool	chk_duplicate(t_list **tmp)
 {
-	int *ptr;
-	int len;
-	int i;
+	int	*ptr;
+	int	len;
+	int	i;
 
 	len = count_stack(tmp);
 	ptr = malloc(sizeof(int) * len);
@@ -47,16 +47,17 @@ bool chk_duplicate(t_list **tmp)
 1: เจอตัวอักษร
 */
 
-bool chk_alphabet(char *str)
+bool	chk_alphabet(char *str)
 {
-	int i;
-	bool err_flag;
+	int		i;
+	bool	err_flag;
 
 	i = 0;
 	err_flag = false;
 	while (str[i])
 	{
-		if (ft_isalpha(str[i]) || str[i] == '.' || str[i] == '!' || str[i] == ',')
+		if (ft_isalpha(str[i]) || str[i] == '.' || str[i] == '!' \
+	|| str[i] == ',')
 		{
 			err_flag = true;
 			return (err_flag);
@@ -68,9 +69,9 @@ bool chk_alphabet(char *str)
 	return (err_flag);
 }
 
-bool error_handler(char *str, long *num)
+bool	error_handler(char *str, long *num)
 {
-	bool err_flag;
+	bool	err_flag;
 
 	err_flag = false;
 	err_flag = chk_alphabet(str);

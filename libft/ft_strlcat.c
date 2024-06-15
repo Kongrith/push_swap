@@ -6,7 +6,7 @@
 /*   By: kkomasat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 17:41:19 by kkomasat          #+#    #+#             */
-/*   Updated: 2023/10/28 18:24:00 by kkomasat         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:32:56 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,30 @@ dst\0 | src\0 | 8       || dstsrc\0 | 6
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dest0, const char *src0, size_t size)
+size_t	ft_strlcat(char *dest0, const char *src0, size_t size)
 {
-    size_t i;
-    size_t j;
-    char *dest;
-    char *src;
+	size_t	i;
+	size_t	j;
+	char	*dest;
+	char	*src;
 
-    dest = (char *)dest0;
-    src = (char *)src0;
-    i = 0;
-    j = 0;
-    if (dest == NULL)
-        i = 0;
-    else
-        while (dest[i] && (i < size))
-            ++i;
-    while (src[j] && (i + j + 1 < size))
-    {
-        dest[i + j] = src[j];
-        ++j;
-    }
-    if (i < size)
-        dest[i + j] = '\0';
-    return (i + ft_strlen(src));
+	dest = (char *)dest0;
+	src = (char *)src0;
+	i = 0;
+	j = 0;
+	if (dest == NULL)
+		i = 0;
+	else
+		while (dest[i] && (i < size))
+			++i;
+	while (src[j] && (i + j + 1 < size))
+	{
+		dest[i + j] = src[j];
+		++j;
+	}
+	if (i < size)
+		dest[i + j] = '\0';
+	return (i + ft_strlen(src));
 }
 
 /*

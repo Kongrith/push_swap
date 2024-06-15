@@ -6,7 +6,7 @@
 /*   By: khkomasa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 22:48:47 by khkomasa          #+#    #+#             */
-/*   Updated: 2024/06/06 22:49:13 by khkomasa         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:40:02 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,6 @@ int chk_mid(int mid, int index);
 bool chk_sorting(t_list **stack);
 bool is_empty(const char *str);
 bool chk_alphabet(char *str);
+int count_in_argv(int argc, char **argv);
+
 #endif

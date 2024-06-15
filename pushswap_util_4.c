@@ -6,14 +6,14 @@
 /*   By: khkomasa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 22:53:14 by khkomasa          #+#    #+#             */
-/*   Updated: 2024/06/06 22:53:16 by khkomasa         ###   ########.fr       */
+/*   Updated: 2024/06/15 14:44:22 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	post_operation(t_list **stack_a, t_list **stack_b, int index_stack_a,
-					int index_stack_b)
+		int index_stack_b)
 {
 	int		len_stack_a;
 	int		len_stack_b;

@@ -6,26 +6,11 @@
 /*   By: khkomasa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 22:44:18 by khkomasa          #+#    #+#             */
-/*   Updated: 2024/06/06 22:44:19 by khkomasa         ###   ########.fr       */
+/*   Updated: 2024/06/15 15:01:46 by khkomasa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int count_in_argv(int argc, char **argv)
-{
-	int i;
-	int len;
-
-	i = 1;
-	len = 0;
-	while (i < argc)
-	{
-		len += ft_strlen(argv[i]) + 1;
-		i++;
-	}
-	return (len);
-}
 
 bool chk_input_args(int argc, char **argv)
 {
@@ -128,7 +113,6 @@ int main(int argc, char **argv)
 		initial_stack(&stack_a, argv, -1);
 		free_double_pointer(argv);
 	}
-
 	is_sorted = chk_sorting(&stack_a);
 	if (!is_sorted)
 		push_swap(&stack_a, &stack_b);
